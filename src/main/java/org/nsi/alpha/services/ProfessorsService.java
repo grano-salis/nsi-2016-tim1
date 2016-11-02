@@ -1,6 +1,6 @@
-package services;
+package org.nsi.alpha.services;
 
-import models.Professor;
+import org.nsi.alpha.models.Professor;
 
 import java.util.List;
 

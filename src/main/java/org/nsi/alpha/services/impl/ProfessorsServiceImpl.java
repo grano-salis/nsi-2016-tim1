@@ -1,10 +1,10 @@
-package services.impl;
+package org.nsi.alpha.services.impl;
 
-import models.Professor;
+import org.nsi.alpha.models.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.ProfessorsRepository;
-import services.ProfessorsService;
+import org.nsi.alpha.repositories.ProfessorsRepository;
+import org.nsi.alpha.services.ProfessorsService;
 
 import java.util.List;
 
