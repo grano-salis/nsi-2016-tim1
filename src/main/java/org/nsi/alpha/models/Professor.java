@@ -13,6 +13,8 @@ import java.util.Date;
 public class Professor implements Serializable{
     private static final long serialVersionUID = 1L;
 
+    /*jdbc:oracle:thin:@//80.65.65.66:1521/etflab*/
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
