@@ -1,7 +1,6 @@
 package org.nsi.alpha.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,10 +9,12 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "Professors")
+@Table(name = "PROFESSORS")
 public class Professor implements Serializable{
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String lastName;
     String firstName;
