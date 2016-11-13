@@ -11,4 +11,5 @@ import java.util.List;
 public interface ProfessorsService {
     Professor findById(Long id);
     List<Professor> findAll();
+    Professor save(Professor professor2);
 }

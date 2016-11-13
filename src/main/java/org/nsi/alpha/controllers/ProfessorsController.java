@@ -35,7 +35,7 @@ public class ProfessorsController {
         professor.setCurrentCategory(1);
         professor.setNotes("notes");
         professor.setNumberOfBooks(20);
-        professor.setYearsOfExperiance(5);
+        professor.setYearsOfExperience(5);
         professor.setNumberOfPublications(20);
         professor.setPhoto("urlSlike");
 
@@ -57,12 +57,12 @@ public class ProfessorsController {
         professor1.setCurrentCategory(1);
         professor1.setNotes("notes");
         professor1.setNumberOfBooks(20);
-        professor1.setYearsOfExperiance(5);
+        professor1.setYearsOfExperience(5);
         professor1.setNumberOfPublications(20);
         professor1.setPhoto("urlSlike");
 
         Professor professor2 = new Professor();
-        professor2.setId(1L);
+        professor2.setId(100L);
         professor2.setLastName("Prezime");
         professor2.setFirstName("Ime");
         professor2.setAddress("Adresa");
@@ -70,11 +70,34 @@ public class ProfessorsController {
         professor2.setCurrentCategory(1);
         professor2.setNotes("notes");
         professor2.setNumberOfBooks(20);
-        professor2.setYearsOfExperiance(5);
+        professor2.setYearsOfExperience(5);
         professor2.setNumberOfPublications(20);
         professor2.setPhoto("urlSlike");
 
-        model.put("professors", Arrays.asList(professor1, professor2));
+        model.put("professors1", Arrays.asList(professor1, professor2));
+
+        model.put("professors", professorsService.findAll());
+
+        return model;
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public Map saveProfessor(){
+        Map model = new HashMap<>();
+
+        Professor professor2 = new Professor();
+        professor2.setLastName("SURNAME");
+        professor2.setFirstName("NAME");
+        professor2.setAddress("Adresa");
+        professor2.setBirthDate(new Date());
+        professor2.setCurrentCategory(1);
+        professor2.setNotes("notes");
+        professor2.setNumberOfBooks(20);
+        professor2.setYearsOfExperience(5);
+        professor2.setNumberOfPublications(20);
+        professor2.setPhoto("urlSlike");
+
+        professorsService.save(professor2);
 
         return model;
     }

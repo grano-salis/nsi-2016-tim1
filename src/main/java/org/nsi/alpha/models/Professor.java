@@ -9,24 +9,35 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "PROFESSORS")
+@Table(name = "PROFESSORS", schema = "NSI01")
 public class Professor implements Serializable{
     private static final long serialVersionUID = 1L;
 
     /*jdbc:oracle:thin:@//80.65.65.66:1521/etflab*/
 
     @Id
+    @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(name="LASTNAME")
     String lastName;
+    @Column(name="FIRSTNAME")
     String firstName;
+    @Column(name="ADDRESS")
     String address;
+    @Column(name="BIRTHDATE")
     Date birthDate;
+    @Column(name="PHOTO")
     String photo;
+    @Column(name="NOTES")
     String notes;
-    Integer yearsOfExperiance;
+    @Column(name="YEARSOFEXPERIENCE")
+    Integer yearsOfExperience;
+    @Column(name="NUMBEROFPUBLICATIONS")
     Integer numberOfPublications;
+    @Column(name="NUMBEROFBOOKS")
     Integer numberOfBooks;
+    @Column(name="CURRENTCATEGORY")
     Integer currentCategory;
 
 
@@ -86,12 +97,12 @@ public class Professor implements Serializable{
         this.notes = notes;
     }
 
-    public Integer getYearsOfExperiance() {
-        return yearsOfExperiance;
+    public Integer getYearsOfExperience() {
+        return yearsOfExperience;
     }
 
-    public void setYearsOfExperiance(Integer yearsOfExperiance) {
-        this.yearsOfExperiance = yearsOfExperiance;
+    public void setYearsOfExperience(Integer yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
     }
 
     public Integer getNumberOfPublications() {
@@ -128,7 +139,7 @@ public class Professor implements Serializable{
                 ", birthDate=" + birthDate +
                 ", photo='" + photo + '\'' +
                 ", notes='" + notes + '\'' +
-                ", yearsOfExperiance=" + yearsOfExperiance +
+                ", yearsOfExperience=" + yearsOfExperience +
                 ", numberOfPublications=" + numberOfPublications +
                 ", numberOfBooks=" + numberOfBooks +
                 ", currentCategory=" + currentCategory +
