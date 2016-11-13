@@ -25,8 +25,8 @@ public class ProfessorsController {
     public Map getById(@PathVariable Long id){
         Map model = new HashMap<>();
 
-        //model.put("professor", professorsService.findById(id));
-        Professor professor = new Professor();
+        model.put("professor", professorsService.findById(id));
+        /*Professor professor = new Professor();
         professor.setId(id);
         professor.setLastName("Prezime");
         professor.setFirstName("Ime");
@@ -40,7 +40,7 @@ public class ProfessorsController {
         professor.setPhoto("urlSlike");
 
         model.put("professor", Collections.singletonList(professor));
-
+*/
         return model;
     }
 
@@ -48,7 +48,8 @@ public class ProfessorsController {
     public Map getAll(){
         Map model = new HashMap<>();
 
-        Professor professor1 = new Professor();
+        model.put("professor", professorsService.findAll());
+/*        Professor professor1 = new Professor();
         professor1.setId(1L);
         professor1.setLastName("Prezime");
         professor1.setFirstName("Ime");
@@ -77,7 +78,7 @@ public class ProfessorsController {
         model.put("professors1", Arrays.asList(professor1, professor2));
 
         model.put("professors", professorsService.findAll());
-
+*/
         return model;
     }
 
@@ -86,6 +87,7 @@ public class ProfessorsController {
         Map model = new HashMap<>();
 
         Professor professor2 = new Professor();
+        professor2.setId(2L);
         professor2.setLastName("SURNAME");
         professor2.setFirstName("NAME");
         professor2.setAddress("Adresa");

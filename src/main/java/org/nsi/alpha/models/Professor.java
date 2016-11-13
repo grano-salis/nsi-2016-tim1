@@ -17,7 +17,6 @@ public class Professor implements Serializable{
 
     @Id
     @Column(name="ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Column(name="LASTNAME")
     String lastName;
