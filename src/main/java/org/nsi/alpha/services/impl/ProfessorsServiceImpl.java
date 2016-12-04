@@ -8,10 +8,6 @@ import org.nsi.alpha.services.ProfessorsService;
 
 import java.util.List;
 
-/**
- * Created by edenasevic on 11/2/16.
- */
-
 @Service
 public class ProfessorsServiceImpl implements ProfessorsService{
 
