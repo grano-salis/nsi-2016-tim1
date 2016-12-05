@@ -1,13 +1,15 @@
 package org.nsi.alpha.controllers;
 
 import org.nsi.alpha.models.Criteria;
+import org.nsi.alpha.models.viewModels.CriteriaViewModel;
 import org.nsi.alpha.services.CriteriaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +24,7 @@ public class CriteriaController {
     CriteriaService criteriaService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Map getById(@PathVariable Long id){
+    public Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
 
         model.put("criteria", criteriaService.findById(id));
@@ -30,29 +32,46 @@ public class CriteriaController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll(){
+    public Map getAll() {
         Map model = new HashMap<>();
+
+        Criteria criteria = new Criteria();
+        criteria.setName("Ilvana");
+        criteria.setId(1L);
+        criteria.setLastUpdateDate(new Date());
+        criteria.setDescription("Ilvana");
+        criteria.setInsertDate(new Date());
+        criteria.setPoints(1);
+        criteria.setCriteriaId(1);
+
+        criteriaService.save(criteria);
 
         model.put("criteria", criteriaService.findAll());
         return model;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Map saveCriteria(Criteria criteriaSaveRequest){
-        Map model = new HashMap<>();
-        //todo fixme in a way that this part works without hardcoded values
-        Criteria criteriaToSave = new Criteria();
-        criteriaToSave.setId(3L);
-        criteriaToSave.setDescription(criteriaSaveRequest.getDescription());
-        criteriaToSave.setName(criteriaSaveRequest.getName());
-        criteriaToSave.setId(criteriaSaveRequest.getId());
-        criteriaToSave.setCriteriaId(criteriaSaveRequest.getCriteriaId());
-        criteriaToSave.setInsertDate(criteriaSaveRequest.getInsertDate());
-        criteriaToSave.setLastUpdateDate(criteriaSaveRequest.getLastUpdateDate());
-        criteriaToSave.setPoints(criteriaSaveRequest.getPoints());
+    public ResponseEntity saveCv(@RequestBody Criteria criteriaSaveItemRequest) {
 
-        criteriaService.save(criteriaToSave);
+        try {
+            Criteria savedCriteria = criteriaService.save(criteriaSaveItemRequest);
+            CriteriaViewModel criteriaViewModel = new CriteriaViewModel(savedCriteria);
+            return new ResponseEntity(criteriaViewModel, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
 
-        return model;
+    //ima constraint na criteria, pa se ne mogu item-i brisat
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable("id") Long id) {
+        try {
+            Criteria deletedCriteria = criteriaService.findById(id);
+            CriteriaViewModel criteriaViewModel = new CriteriaViewModel(deletedCriteria);
+            criteriaService.remove(id);
+            return new ResponseEntity(criteriaViewModel, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 }

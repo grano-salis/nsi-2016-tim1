@@ -9,6 +9,10 @@ import java.util.List;
  */
 public interface CriteriaService {
     Criteria findById(Long id);
+
     List<Criteria> findAll();
+
     Criteria save(Criteria criteria);
+
+    void remove(Long id);
 }

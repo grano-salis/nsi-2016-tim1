@@ -1,12 +1,12 @@
 package org.nsi.alpha.controllers;
 
 import org.nsi.alpha.models.Status;
+import org.nsi.alpha.models.viewModels.StatusViewModel;
 import org.nsi.alpha.services.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ public class StatusController {
     StatusService statusService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Map getById(@PathVariable Long id){
+    public Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
 
         model.put("status", statusService.findById(id));
@@ -31,23 +31,28 @@ public class StatusController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll(){
+    public Map getAll() {
         Map model = new HashMap<>();
+
+        Status status = new Status();
+        status.setId(1L);
+        status.setValue("ilvana");
+
+        statusService.save(status);
 
         model.put("status", statusService.findAll());
         return model;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Map saveStatus(Status statusSaveRequest){
-        Map model = new HashMap<>();
-        //todo fixme in a way that this part works without hardcoded values
-        Status statusToSave = new Status();
-        statusToSave.setId(3L);
-        statusToSave.setValue(statusSaveRequest.getValue());
+    public ResponseEntity saveCv(@RequestBody Status statusSaveRequest) {
 
-        statusService.save(statusToSave);
-
-        return model;
+        try {
+            Status savedStatus = statusService.save(statusSaveRequest);
+            StatusViewModel statusViewModel = new StatusViewModel(savedStatus);
+            return new ResponseEntity(statusViewModel, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 }

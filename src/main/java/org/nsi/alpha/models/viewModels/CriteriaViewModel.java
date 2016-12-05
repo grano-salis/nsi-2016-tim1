@@ -1,36 +1,29 @@
-package org.nsi.alpha.models;
+package org.nsi.alpha.models.viewModels;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.nsi.alpha.models.Criteria;
+
 import java.util.Date;
 
-/**
- * Created by ekusundzija on 17/11/16.
- */
-
-@Entity
-@Table(name = "CRITERIA", schema = "NSI01")
-public class Criteria {
+public class CriteriaViewModel {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @Column(name = "ID")
     Long id;
-    @Column(name = "NAME")
     String name;
-    @Column(name = "DESCRIPTION")
     String description;
-    @Column(name = "POINTS")
     Integer points;
-    @Column(name = "INSERT_DATE")
     Date insertDate;
-    @Column(name = "LAST_UPDATE_DATE")
     Date lastUpdateDate;
-    @Column(name = "CRITERIA_ID")
     Integer criteriaId;
+
+    public CriteriaViewModel(Criteria criteria) {
+        id = criteria.getId();
+        name = criteria.getName();
+        description = criteria.getDescription();
+        points = criteria.getPoints();
+        insertDate = criteria.getInsertDate();
+        lastUpdateDate = criteria.getLastUpdateDate();
+        criteriaId = criteria.getCriteriaId();
+    }
 
     public Long getId() {
         return id;
@@ -90,7 +83,7 @@ public class Criteria {
 
     @Override
     public String toString() {
-        return "Criteria{" +
+        return "CriteriaViewModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
