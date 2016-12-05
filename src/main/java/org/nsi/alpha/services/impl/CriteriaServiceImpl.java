@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CriteriaServiceImpl implements CriteriaService{
+public class CriteriaServiceImpl implements CriteriaService {
+
     @Autowired
     CrieteriaRepository crieteriaRepository;
 
@@ -27,5 +28,10 @@ public class CriteriaServiceImpl implements CriteriaService{
     @Override
     public Criteria save(Criteria criteria) {
         return crieteriaRepository.save(criteria);
+    }
+
+    @Override
+    public void remove(Long id) {
+        crieteriaRepository.delete(id);
     }
 }

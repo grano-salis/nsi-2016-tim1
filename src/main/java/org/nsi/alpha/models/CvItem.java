@@ -4,33 +4,51 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by ekusundzija on 17/11/16.
- */
-
 @Entity
-@Table(name = "CRITERIA", schema = "NSI01")
-public class Criteria {
+@Table(name = "CV_ITEM", schema = "NSI01")
+public class CvItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "ID")
     Long id;
+
     @Column(name = "NAME")
     String name;
+
     @Column(name = "DESCRIPTION")
     String description;
-    @Column(name = "POINTS")
-    Integer points;
+
+    @Column(name = "START_DATE")
+    Date startDate;
+
+    @Column(name = "END_DATE")
+    Date endDate;
+
     @Column(name = "INSERT_DATE")
     Date insertDate;
+
     @Column(name = "LAST_UPDATE_DATE")
     Date lastUpdateDate;
+
+    @Column(name = "CV_ITEM_ID")
+    Integer cvItemId;
+
     @Column(name = "CRITERIA_ID")
     Integer criteriaId;
+
+    @Column(name = "CV_ID")
+    Integer cvId;
+
+    @Column(name = "STATUS_ID")
+    Integer statusId;
+
+    public CvItem() {
+    }
 
     public Long getId() {
         return id;
@@ -56,12 +74,20 @@ public class Criteria {
         this.description = description;
     }
 
-    public Integer getPoints() {
-        return points;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Date getInsertDate() {
@@ -80,6 +106,14 @@ public class Criteria {
         this.lastUpdateDate = lastUpdateDate;
     }
 
+    public Integer getCvItemId() {
+        return cvItemId;
+    }
+
+    public void setCvItemId(Integer cvItemId) {
+        this.cvItemId = cvItemId;
+    }
+
     public Integer getCriteriaId() {
         return criteriaId;
     }
@@ -88,16 +122,36 @@ public class Criteria {
         this.criteriaId = criteriaId;
     }
 
+    public Integer getCvId() {
+        return cvId;
+    }
+
+    public void setCvId(Integer cvId) {
+        this.cvId = cvId;
+    }
+
+    public Integer getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
+
     @Override
     public String toString() {
-        return "Criteria{" +
+        return "CvItem{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", points=" + points +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
                 ", insertDate=" + insertDate +
                 ", lastUpdateDate=" + lastUpdateDate +
+                ", cvItemId=" + cvItemId +
                 ", criteriaId=" + criteriaId +
+                ", cvId=" + cvId +
+                ", statusId=" + statusId +
                 '}';
     }
 }

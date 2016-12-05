@@ -22,7 +22,7 @@ public class ProfessorsController {
     ProfessorsService professorsService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Map getById(@PathVariable Long id){
+    public Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
 
         model.put("professor", professorsService.findById(id));
@@ -30,7 +30,7 @@ public class ProfessorsController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll(){
+    public Map getAll() {
         Map model = new HashMap<>();
 
         model.put("professor", professorsService.findAll());
@@ -38,7 +38,7 @@ public class ProfessorsController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Map saveProfessor(Professor professorSaveRequest){
+    public Map saveProfessor(Professor professorSaveRequest) {
         Map model = new HashMap<>();
         //todo fixme in a way that this part works without hardcoded values
         Professor professorToSave = new Professor();
