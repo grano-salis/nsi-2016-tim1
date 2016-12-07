@@ -5,8 +5,10 @@ import org.nsi.alpha.models.viewModels.CriteriaViewModel;
 import org.nsi.alpha.services.CriteriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -24,7 +26,7 @@ public class CriteriaController {
     CriteriaService criteriaService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Map getById(@PathVariable Long id) {
+    public @ResponseBody Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
 
         model.put("criteria", criteriaService.findById(id));
@@ -32,7 +34,7 @@ public class CriteriaController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll() {
+    public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
         Criteria criteria = new Criteria();

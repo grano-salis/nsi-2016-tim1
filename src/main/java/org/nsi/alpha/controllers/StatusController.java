@@ -23,7 +23,7 @@ public class StatusController {
     StatusService statusService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Map getById(@PathVariable Long id) {
+    public @ResponseBody Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
 
         model.put("status", statusService.findById(id));
@@ -31,7 +31,7 @@ public class StatusController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll() {
+    public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
         Status status = new Status();

@@ -32,7 +32,7 @@ public class CvItemController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll() {
+    public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
         CvItem cvItem = new CvItem();
