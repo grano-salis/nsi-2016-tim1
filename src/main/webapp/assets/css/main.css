@@ -3225,3 +3225,49 @@ button:disabled,
 	}
 
 }
+
+#listContainer{
+	margin-top:15px;
+	text-align: left;
+}
+
+#expList ul, li {
+	list-style: none;
+	margin:0;
+	padding:0;
+	cursor: pointer;
+}
+#expList p {
+	margin:0;
+	display:block;
+}
+#expList p:hover {
+	background-color:#121212;
+}
+#expList li {
+	text-align: left;
+	line-height:140%;
+	text-indent:0px;
+	background-position: 1px 8px;
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background: #6cc091;
+	max-width: 300px;
+	margin: 10px;
+	color: #ffffff;
+	border-radius: 14px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	font-size: 15pt;
+
+}
+
+/* Collapsed state for list element */
+#expList .collapsed {
+	background-image: url(../img/collapsed.png);
+}
+/* Expanded state for list element
+/* NOTE: This class must be located UNDER the collapsed one */
+#expList .expanded {
+	background-image: url(../img/expanded.png);
+}
