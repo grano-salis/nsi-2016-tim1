@@ -18,12 +18,17 @@ import java.util.Map;
 /**
  * Created by ekusundzija on 17/11/16.
  */
-@RestController
+@Controller
 @RequestMapping(value = "/criteria")
 public class CriteriaController {
 
     @Autowired
     CriteriaService criteriaService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String getCriteriaView(Model model){
+        return "criteria";
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody Map getById(@PathVariable Long id) {
@@ -33,7 +38,7 @@ public class CriteriaController {
         return model;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value ="/all", method = RequestMethod.GET)
     public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
