@@ -32,7 +32,7 @@ public class CvController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Map getAll() {
+    public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
         Cv cv = new Cv();
