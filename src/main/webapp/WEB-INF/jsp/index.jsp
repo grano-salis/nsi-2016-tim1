@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body class="landing">
+<body style="min-height: auto">
 
 <!-- Header -->
 <header id="header" class="alt">
-  <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index">Professor Evaluator</a></strong> by Alpha NSI</h1>
+  <h1 style="margin-right:4%;margin-left:4%"><strong><a href="index">Professor Evaluator</a></strong> by Alpha NSI</h1>
   <nav id="nav">
     <ul>
       <li style="display:inline"><a href="index">Home</a></li>
       <li style="display:inline"><a href="professors">Professors</a></li>
-      <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
+      <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
     </ul>
   </nav>
 </header>
@@ -26,24 +26,30 @@
       <h1>Welcome to Professor Evaluator</h1>
     </header>
 
-    <div class="flex ">
+    <div class="flex">
 
-      <div>
+      <div style="width:400px">
+        <a href="professors" style="text-decoration: none;">
         <span class="icon fa-user"></span>
         <h3>Professors</h3>
         <p>List of professors and their CV lines</p>
+        </a>
       </div>
 
-      <div>
+      <div style="width:600px">
+        <a href="criteria" style="text-decoration: none;">
         <span class="icon fa-list"></span>
-        <h3>Categories</h3>
+        <h3>Criteria</h3>
         <p>Filtering professors via categories and subcategories</p>
+        </a>
       </div>
 
-      <div>
+      <div style="width:400px">
+        <a href="status_handling" style="text-decoration: none;">
         <span class="icon fa-book"></span>
         <h3>CV Status Management</h3>
         <p>CV changes validation</p>
+        </a>
       </div>
 
     </div>
@@ -56,6 +62,7 @@
 
 
 <!-- Three -->
+<!--
 <section id="three" class="wrapper align-center">
   <div class="inner">
     <div class="flex flex-2">
@@ -80,9 +87,9 @@
     </div>
   </div>
 </section>
-
+-->
 <!-- Footer -->
-<footer id="footer">
+<!--<footer id="footer">
   <div class="inner">
 
     <h3>Get in touch</h3>
@@ -112,7 +119,7 @@
 
   </div>
 </footer>
-
+-->
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>

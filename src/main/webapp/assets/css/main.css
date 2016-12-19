@@ -2984,7 +2984,6 @@ button:disabled,
 /* Banner */
 
 #banner {
-	padding: 8em 0 9em 0;
 	background-image: url(../../images/wallpaper.jpg);
 	background-size: cover;
 	background-position: bottom;
@@ -2992,6 +2991,7 @@ button:disabled,
 	background-repeat: no-repeat;
 	text-align: center;
 	position: relative;
+	height: 100%;
 }
 
 #banner:before {

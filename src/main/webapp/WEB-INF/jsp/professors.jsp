@@ -54,7 +54,7 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer --><!--
 <footer id="footer">
   <div class="inner">
 
@@ -85,7 +85,7 @@
 
   </div>
 </footer>
-
+-->
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
