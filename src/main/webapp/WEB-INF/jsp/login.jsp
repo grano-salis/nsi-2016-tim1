@@ -12,7 +12,7 @@
     <header id="header" class="alt">
         <h1 style="margin-right:4%;margin-left:4%;"><strong><a>Professor Evaluator</a></strong> by Alpha NSI</h1>
     </header>
-    <section id="banner" style="padding-top: 8.6em;padding-bottom: 7.5em">
+    <section id="banner" style="padding-top: 8.6em;padding-bottom: 8.5em">
         <div class="inner">
             <header>
                 <h1>Welcome to Professor Evaluator</h1>

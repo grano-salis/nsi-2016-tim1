@@ -21,7 +21,7 @@
   </nav>
 </header>
 <!-- Banner -->
-<section id="banner" style="padding-top: 8.6em;padding-bottom: 9em">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 7.4em">
   <div class="inner">
     <header>
       <h1>Welcome to Professor Evaluator</h1>
@@ -29,7 +29,7 @@
 
     <div class="flex">
 
-      <div style="width:400px">
+      <div class="hover-link" style="width:460px;padding-left: 10%">
         <a href="professors" style="text-decoration: none;">
         <span class="icon fa-user"></span>
         <h3>Professors</h3>
@@ -37,7 +37,7 @@
         </a>
       </div>
 
-      <div style="width:600px">
+      <div class="hover-link" style="width:460px">
         <a href="criteria" style="text-decoration: none;">
         <span class="icon fa-list"></span>
         <h3>Criteria</h3>
@@ -45,7 +45,7 @@
         </a>
       </div>
 
-      <div style="width:400px">
+      <div class="hover-link" style="width:460px;padding-right: 10%">
         <a href="status_handling" style="text-decoration: none;">
         <span class="icon fa-book"></span>
         <h3>CV Status Management</h3>
