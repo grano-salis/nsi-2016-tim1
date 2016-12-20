@@ -17,7 +17,7 @@
         <ul>
             <li style="display:inline"><a href="index">Home</a></li>
             <li style="display:inline"><a href="professors">Professors</a></li>
-            <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
+            <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
         </ul>
     </nav>
 </header>
