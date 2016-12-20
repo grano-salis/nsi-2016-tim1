@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<body style="min-height: auto">
+<body>
 
 <!-- Header -->
 <header id="header" class="alt">
-  <h1 style="margin-right:4%;margin-left:4%"><strong><a href="index">Professor Evaluator</a></strong> by Alpha NSI</h1>
+  <h1 style="margin-right:4%;margin-left:4%;"><strong><a href="index">Professor Evaluator</a></strong> by Alpha NSI</h1>
   <nav id="nav">
     <ul>
       <li style="display:inline"><a href="index">Home</a></li>
@@ -20,7 +20,7 @@
   </nav>
 </header>
 <!-- Banner -->
-<section id="banner">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 9em">
   <div class="inner">
     <header>
       <h1>Welcome to Professor Evaluator</h1>

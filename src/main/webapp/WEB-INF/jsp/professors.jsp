@@ -20,7 +20,7 @@
   </nav>
 </header>
 <!-- Banner -->
-<section id="banner">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 3em">
   <div class="inner">
     <header>
       <h1>Professors</h1>
