@@ -3271,3 +3271,7 @@ button:disabled,
 #expList .expanded {
 	background-image: url(../img/expanded.png);
 }
+
+.hover-link:hover {
+	background-color: rgba(108, 192, 145, 0.15);
+}
