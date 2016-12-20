@@ -41,14 +41,7 @@ public class StatusController {
     public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
-        //Status status = new Status();
-        //status.setId(1L);
-        //status.setValue("ilvana");
-
-        //statusService.save(status);
-
-        model.put("status", statusService.findItemsByStatus("PENDING"));
-        //model.put("status", statusService.findAll());
+        model.put("status", statusService.findAll());
         return model;
     }
 
@@ -57,7 +50,6 @@ public class StatusController {
         Map model = new HashMap<>();
 
         model.put("status", statusService.findItemsByStatus(status));
-        //model.put("status", statusService.findAll());
         return model;
     }
 
