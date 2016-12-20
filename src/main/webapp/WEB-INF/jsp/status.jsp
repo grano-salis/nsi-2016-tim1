@@ -24,8 +24,8 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <header id="abcdef">
-            <h1 v-on:click="say('hi')">Student Service</h1>
+        <header>
+            <h1>Student Service</h1>
             <h3>Filtering professors via categories and subcategories</h3>
         </header>
     </div>
@@ -35,7 +35,6 @@
 <!-- Three -->
 <section id="three" class="wrapper align-center">
     <div class="inner">
-
         <ul class="tabstatus">
             <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Pending')" id="defaultOpen">Pending</a></li>
             <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Approved')">Approved</a></li>
@@ -100,11 +99,6 @@
                 </tr>
             </table>
         </div>
-
-
-
-
-
     </div>
 </section>
 
@@ -171,6 +165,5 @@
 
     document.getElementById("defaultOpen").click();
 </script>
-
 </body>
 </html>
