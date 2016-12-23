@@ -47,7 +47,16 @@ public class StatusController {
 
         //statusService.save(status);
 
-        model.put("status", statusService.findItemsByStatus("ilvana"));
+        model.put("status", statusService.findItemsByStatus("PENDING"));
+        //model.put("status", statusService.findAll());
+        return model;
+    }
+
+    @RequestMapping(value ="/bystatus", method = RequestMethod.GET)
+    public @ResponseBody Map getByStatus(@RequestParam("status") String status) {
+        Map model = new HashMap<>();
+
+        model.put("status", statusService.findItemsByStatus(status));
         //model.put("status", statusService.findAll());
         return model;
     }

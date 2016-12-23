@@ -35,13 +35,77 @@
 <!-- Three -->
 <section id="three" class="wrapper align-center">
     <div class="inner">
-        <div class="flexprof flex-2" v-for="cvItem in cvItems">
-            <article>
-                <header>
-                    <h3><span v-text="cvItem.name"></span> <span v-text="cvItem.description"></span></h3>
-                </header>
-            </article>
+
+        <ul class="tabstatus">
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Pending')" id="defaultOpen">Pending</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Approved')">Approved</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Rejected')">Rejected</a></li>
+        </ul>
+
+        <div id="Pending" class="tabcontent">
+            <table class="studentServiceItems">
+                <tr class="header">
+                    <th>CV Item name</th>
+                    <th>CV Item link</th>
+                    <th>Date applied</th>
+                    <th class="centered">Approve</th>
+                    <th class="centered">Reject</th>
+                </tr>
+
+                <tr v-for="cvItem in pendingItems">
+                    <th v-text="cvItem.name"></th>
+                    <th v-text="cvItem.description">/th>
+                    <th v-text="cvItem.startDate"></th>
+                    <th class="centered">
+                        <button class="approveItem">Approve</button>
+                    </th>
+                    <th class="centered">
+                        <button class="rejectItem">Reject</button>
+                    </th>
+                </tr>
+            </table>
         </div>
+
+        <div id="Approved" class="tabcontent">
+            <table class="studentServiceItems">
+                <tr class="header">
+                    <th>CV Item name</th>
+                    <th>CV Item link</th>
+                    <th>Date applied</th>
+                    <th>Date approved</th>
+                </tr>
+
+                <tr v-for="cvItem in approvedItems">
+                    <th v-text="cvItem.name"></th>
+                    <th v-text="cvItem.description">/th>
+                    <th v-text="cvItem.startDate"></th>
+                    <th v-text="cvItem.lastUpdateDate"></th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="Rejected" class="tabcontent">
+            <table class="studentServiceItems">
+                <tr class="header">
+                    <th>CV Item name</th>
+                    <th>CV Item link</th>
+                    <th>Date applied</th>
+                    <th>Date approved</th>
+                </tr>
+
+                <tr v-for="cvItem in rejectedItems">
+                    <th v-text="cvItem.name"></th>
+                    <th v-text="cvItem.description">/th>
+                    <th v-text="cvItem.startDate"></th>
+                    <th v-text="cvItem.lastUpdateDate"></th>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+
     </div>
 </section>
 
@@ -84,6 +148,30 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/vue.js"></script>
 <script src="assets/js/status.js"></script>
+<script language="javascript" type="text/javascript">
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    document.getElementById("defaultOpen").click();
+</script>
 
 </body>
 </html>
