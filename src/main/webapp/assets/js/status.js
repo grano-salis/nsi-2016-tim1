@@ -2,7 +2,6 @@
  * Created by ekusundzija on 07/12/16.
  */
 
-<<<<<<< HEAD
 var pendingItemsVue;
 var approvedItemsVue;
 var rejectedItemsVue;
@@ -137,65 +136,35 @@ function newApprovedItemsVue(status){
 
 function getAllRejectedStatuses(){
     $.ajax('/status/bystatus?status=' + statusRejected, {
-=======
-var cvItemsVue;
-
-$(function () {
-    getAllStatuses();
-
-});
-
-function getAllStatuses(){
-    $.ajax('/status/all', {
->>>>>>> Initial work
         headers: {
             Accept : "application/json; charset=utf-8",
             "Content-Type": "application/json; charset=utf-8"
         },
         success: function(data) {
             if((data.status != undefined)) {
-<<<<<<< HEAD
                 if (rejectedItemsVue != null) {
                     rejectedItemsVue.rejectedItems = data.status;
                 } else {
                     rejectedItemsVue = newRejectedItemsVue(data.status);
-=======
-                if (cvItemsVue != null) {
-                    cvItemsVue.cvItems = data.status;
-                } else {
-                    cvItemsVue = newCvItemsVue(data.status);
->>>>>>> Initial work
                 }
             }
         }
     });
 }
 
-
-<<<<<<< HEAD
 function newRejectedItemsVue(status){
     return new Vue({
         el: '#Rejected',
         data: {
             rejectedItems: status
-=======
-function newCvItemsVue(status){
-    return new Vue({
-        el: '#three',
-        data: {
-            cvItems: status
->>>>>>> Initial work
         },
         methods: {
             hide: function(){
                 this.errorMessage = "";
-<<<<<<< HEAD
             },
             convertDate: function(epochDate) {
                 tempDate =  new Date(epochDate);
                 return tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
-=======
->>>>>>> Initial work
             }
         }
     })

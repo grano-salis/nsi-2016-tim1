@@ -75,7 +75,7 @@
 
                 <tr v-for="cvItem in approvedItems">
                     <th v-text="cvItem.name"></th>
-                    <th v-text="cvItem.description">/th>
+                    <th v-text="cvItem.description"></th>
                     <th v-text="convertDate(cvItem.startDate)"></th>
                     <th v-text="convertDate(cvItem.lastUpdateDate)"></th>
                 </tr>
@@ -93,12 +93,17 @@
 
                 <tr v-for="cvItem in rejectedItems">
                     <th v-text="cvItem.name"></th>
-                    <th v-text="cvItem.description">/th>
+                    <th v-text="cvItem.description"></th>
                     <th v-text="convertDate(cvItem.startDate)"></th>
                     <th v-text="convertDate(cvItem.lastUpdateDate)"></th>
                 </tr>
             </table>
         </div>
+
+
+
+
+
     </div>
 </section>
 
