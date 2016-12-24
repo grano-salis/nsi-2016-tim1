@@ -6,20 +6,21 @@ import org.nsi.alpha.services.CvItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
-@RequestMapping(value = "/cvItem")
+@Controller
+@RequestMapping
 public class CvItemController {
 
     @Autowired
     CvItemService cvItemService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "cv_item/{id}", method = RequestMethod.GET)
     public ResponseEntity getById(@PathVariable Long id) {
 
         try {
@@ -30,6 +31,42 @@ public class CvItemController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @RequestMapping(value = "/new_cv_item", method = RequestMethod.GET)
+    public String newCvItem(){
+
+        return "new_cv_item";
+    }
+
+    @RequestMapping(value = "/create_cv_item", method = RequestMethod.GET)
+    public @ResponseBody Map createCvItem(
+            @RequestParam(value = "name", required = false, defaultValue = "no_name") String name,
+            @RequestParam(value = "description", required = false, defaultValue = "desc") String description){
+
+        Map model = new HashMap<>();
+
+        CvItem cvItem = new CvItem();
+        cvItem.setName(name);
+        cvItem.setDescription(description);
+        cvItem.setInsertDate(new Date()); //Stavka unesena upravo u ovom trenutku
+
+        //Po defaultu ide 1 koji ce predstavljati status PENDING (preostali statusi su APPROVED i DECLINED)
+        cvItem.setStatusId(1);
+
+        //TODO: Za ovaj cvId ce se postaviti vrijednost ID-a ulogovanog profesora (vjerovatno neka veza profa-cv)
+        cvItem.setCvId(1);
+
+        //TODO: Kada budemo imali drvo za odabir kriterija, dodati i ovo kao parametar kontrolera
+        cvItem.setCriteriaId(1);
+
+        //TODO: Definisati sta raditi sa ovim
+        //cvItem.setCvItemId();
+        cvItem.setId(3L);
+        model.put("savedCvItem", cvItemService.save(cvItem));
+
+        return model;
+    }
+
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Map getAll() {
