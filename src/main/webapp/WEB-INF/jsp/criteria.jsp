@@ -17,16 +17,16 @@
         <ul>
             <li style="display:inline"><a href="index">Home</a></li>
             <li style="display:inline"><a href="professors">Professors</a></li>
-            <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
+            <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
         </ul>
     </nav>
 </header>
 <!-- Banner -->
-<section id="banner">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 3em">
     <div class="inner">
         <header>
             <h1>Criteria</h1>
-            <h3>List of criteria</h3>
+            <h3>Filtering professors via categories and subcategories</h3>
         </header>
     </div>
 </section>
@@ -118,7 +118,7 @@
     </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer --><!--
 <footer id="footer">
     <div class="inner">
 
@@ -149,7 +149,7 @@
 
     </div>
 </footer>
-
+-->
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
