@@ -11,10 +11,14 @@ var statusRejected = "REJECTED";
 var statusPending = "PENDING";
 
 $(function () {
+    getAllStatuses();
+});
+
+function getAllStatuses() {
     getAllPendingStatuses();
     getAllRejectedStatuses();
     getAllApprovedStatuses();
-});
+}
 
 function getAllPendingStatuses(){
     $.ajax('/status/bystatus?status=' + statusPending, {
@@ -44,6 +48,50 @@ function newPendingItemsVue(status){
         methods: {
             hide: function(){
                 this.errorMessage = "";
+            },
+            changeStatus: function(object, statusToChange) {
+                //object.status_id = 1;
+                tempObj = JSON.parse(JSON.stringify(object));
+                tempObj.statusId = statusToChange;
+                console.log(tempObj);
+                var newObj = '{'
+                    + '"id":' + tempObj.id +','
+                    + '"name":"' + tempObj.name +'",'
+                    + '"description":"' + tempObj.description +'",'
+                    + '"startDate":' + tempObj.startDate +','
+                    + '"endDate":' + tempObj.endDate +','
+                    + '"insertDate":' + tempObj.insertDate +','
+                    + '"lastUpdateDate":' + tempObj.lastUpdateDate +','
+                    + '"cvItemId":' + tempObj.cvItemId +','
+                    + '"criteriaId":' + tempObj.criteriaId +','
+                    + '"cvId":' + tempObj.cvId +','
+                    + '"statusId":' + tempObj.statusId
+                    +'}';
+
+                console.log(newObj);
+
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    type: "POST",
+                    url: "/cvItem/save",
+                    data: newObj,
+                    success: function(data) {
+                        console.log(data.status);
+                        getAllStatuses();
+                    },
+                    dataType: "json"
+                });
+            },
+            reject: function(message) {
+                alert (message)
+
+            },
+            convertDate: function(epochDate) {
+                tempDate =  new Date(epochDate);
+                return tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
             }
         }
     })
@@ -77,6 +125,10 @@ function newApprovedItemsVue(status){
         methods: {
             hide: function(){
                 this.errorMessage = "";
+            },
+            convertDate: function(epochDate) {
+                tempDate =  new Date(epochDate);
+                return tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
             }
         }
     })
@@ -110,6 +162,10 @@ function newRejectedItemsVue(status){
         methods: {
             hide: function(){
                 this.errorMessage = "";
+            },
+            convertDate: function(epochDate) {
+                tempDate =  new Date(epochDate);
+                return tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
             }
         }
     })
