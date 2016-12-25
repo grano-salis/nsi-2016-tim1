@@ -24,8 +24,8 @@
 <!-- Banner -->
 <section id="banner">
     <div class="inner">
-        <header>
-            <h1>Student Service</h1>
+        <header id="abcdef">
+            <h1 v-on:click="say('hi')">Student Service</h1>
             <h3>Filtering professors via categories and subcategories</h3>
         </header>
     </div>
@@ -51,16 +51,15 @@
                     <th class="centered">Approve</th>
                     <th class="centered">Reject</th>
                 </tr>
-
                 <tr v-for="cvItem in pendingItems">
                     <th v-text="cvItem.name"></th>
                     <th v-text="cvItem.description">/th>
-                    <th v-text="cvItem.startDate"></th>
+                    <th v-text="convertDate(cvItem.startDate)"></th>
                     <th class="centered">
-                        <button class="approveItem">Approve</button>
+                        <button @click="changeStatus(cvItem, 1)" class="approveItem">Approved</button>
                     </th>
                     <th class="centered">
-                        <button class="rejectItem">Reject</button>
+                        <button @click="changeStatus(cvItem, 2)" class="rejectItem">Reject</button>
                     </th>
                 </tr>
             </table>
@@ -78,8 +77,8 @@
                 <tr v-for="cvItem in approvedItems">
                     <th v-text="cvItem.name"></th>
                     <th v-text="cvItem.description">/th>
-                    <th v-text="cvItem.startDate"></th>
-                    <th v-text="cvItem.lastUpdateDate"></th>
+                    <th v-text="convertDate(cvItem.startDate)"></th>
+                    <th v-text="convertDate(cvItem.lastUpdateDate)"></th>
                 </tr>
             </table>
         </div>
@@ -96,8 +95,8 @@
                 <tr v-for="cvItem in rejectedItems">
                     <th v-text="cvItem.name"></th>
                     <th v-text="cvItem.description">/th>
-                    <th v-text="cvItem.startDate"></th>
-                    <th v-text="cvItem.lastUpdateDate"></th>
+                    <th v-text="convertDate(cvItem.startDate)"></th>
+                    <th v-text="convertDate(cvItem.lastUpdateDate)"></th>
                 </tr>
             </table>
         </div>
