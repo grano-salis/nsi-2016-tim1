@@ -4,13 +4,12 @@
 
 var cvItem;
 
-var uploadFile = function() {
-    var completed, createTicketButton, percent, status, submitButton, cvItemFileUploadForm;
+var uploadCvItemAttachment = function() {
+    var completed, percent, status, submitButton, cvItemFileUploadForm;
     percent = $("#fileUploadPercents");
     status = $('#uploadStatus');
     submitButton = $('#uploadFile');
     cvItemFileUploadForm = $('#cvItemFileUploadForm');
-    createTicketButton = $("#createTicket");
     completed = '0%';
     $(cvItemFileUploadForm).ajaxSubmit({
         beforeSend: function() {
@@ -18,7 +17,6 @@ var uploadFile = function() {
             status.show();
             status.html('<strong>Uploading, please wait...</strong>');
             submitButton.addClass('disabled');
-            createTicketButton.addClass('disabled');
             percent.html(completed);
         },
         uploadProgress: function(event, position, total, percentComplete) {
@@ -38,7 +36,6 @@ var uploadFile = function() {
         complete: function(response) {
             status.removeClass('alert alert-info');
             submitButton.removeClass('disabled');
-            createTicketButton.removeClass('disabled');
             if (response.status === 200) {
                 status.html('<div class="alert alert-success">' +
                     '<strong>File uploaded successfully</strong>' +
@@ -63,5 +60,5 @@ var uploadFile = function() {
 };
 
 var deleteUpload = function() {
-
+    console.log("Radi funkcija!")
 };

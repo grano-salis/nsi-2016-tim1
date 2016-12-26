@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap.css" />
 </head>
 <body class="landing">
 
@@ -33,34 +34,29 @@
 <section id="three" class="wrapper align-center">
   <div class="inner">
 
-    <form>
       <div class="form-group">
         <label class="form-control">Name: </label>
         <input class="form-control" type="text"/>
       </div>
-
+      <br><br>
       <div class="form-group">
         <label class="form-control">Description: </label>
         <textarea class="form-control" rows="7" ></textarea>
       </div>
-
+      <br><br>
       <div class="form-group">
         <form id="cvItemFileUploadForm" method="POST" enctype="multipart/form-data"
-              action="/cvItem/upload_file" style="display: block">
+              action="/upload_cv_item_attachment" style="display: block">
 
           <label style="display: block">Attach file:</label>
-          <input type="file" id="fileLoader" name="file" style="display: inline-block" />
-          <input onclick="uploadFile()" id="uploadFile" class="btn btn-danger btn-file" value="Upload"/>
+          <input type="file" id="fileLoader" name="file" style="display: inline-block" readonly>
+          <button onclick="uploadCvItemAttachment()" id="uploadFile" class="btn btn-danger btn-file">Upload</button>
           <div id="fileUploadPercents" style="padding-left: 5px; display: inline-block">0%</div>
 
         </form>
-        <div class="form-group">
-          <button id="clearAttachment" onclick="deleteUpload()">Clear Attachment</button>
-        </div>
-
+        <button id="clearAttachment" onclick="deleteUpload()">Clear Attachment</button>
         <div id="uploadStatus"></div>
       </div>
-    </form>
 
   </div>
 </section>

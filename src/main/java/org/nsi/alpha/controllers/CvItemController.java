@@ -1,14 +1,21 @@
 package org.nsi.alpha.controllers;
 
+import org.apache.commons.net.ftp.*;
 import org.nsi.alpha.models.CvItem;
 import org.nsi.alpha.models.viewModels.CvItemViewModel;
 import org.nsi.alpha.services.CvItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,12 +69,35 @@ public class CvItemController {
         //TODO: Definisati sta raditi sa ovim
         //cvItem.setCvItemId();
         cvItem.setId(3L);
-        model.put("savedCvItem", cvItemService.save(cvItem));
+
+        try {
+            connectToFTPClient();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //model.put("savedCvItem", cvItemService.save(cvItem));
 
         return model;
     }
 
+    @RequestMapping(value = "/upload_cv_item_attachment", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public Map fileUpload(@RequestParam("file") MultipartFile mpFile, HttpServletResponse response) {
 
+        Map model = new HashMap<>();
+
+        boolean uploadSucceded = false;
+
+        try {
+            uploadSucceded = uploadFile(mpFile.getInputStream(), mpFile.getOriginalFilename());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        model.put("uploadSuccess", uploadSucceded);
+
+        return model;
+    }
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
@@ -116,5 +146,81 @@ public class CvItemController {
         }
     }
 
+    public FTPClient connectToFTPClient() throws IOException {
+        String serverAddress = "host4.bakop.com";
 
+        FTPClient ftpClient = new FTPClient();
+        ftpClient.setConnectTimeout(10000);
+        ftpClient.setControlKeepAliveTimeout(30);
+        ftpClient.connect(serverAddress);
+        if (!FTPReply.isPositiveCompletion(ftpClient.getReplyCode())) {
+            ftpClient.disconnect();
+            throw new FTPConnectionClosedException("Failed to connect to server: " + serverAddress);
+        } else {
+            ftpClient.login("emirmire", "nsimire");
+            ftpClient.enterLocalPassiveMode();
+            ftpClient.changeWorkingDirectory(null);
+
+            return ftpClient;
+        }
+    }
+
+    public boolean downloadFile(BufferedOutputStream bufferedOutputStream, String fileName){
+        boolean result = false;
+
+        FTPClient ftpClient = new FTPClient();
+
+        try{
+            ftpClient = connectToFTPClient();
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+            result = ftpClient.retrieveFile(fileName, bufferedOutputStream);
+
+            ftpClient.logout();
+
+            return result;
+        } catch (Exception e ){
+            System.out.println("Error downloading the file!");
+        } finally {
+            disconnect(ftpClient);
+        }
+
+        return result;
+    }
+
+    public boolean uploadFile(InputStream inputStream, String fileName){
+        boolean result = false;
+
+        FTPClient ftpClient = new FTPClient();
+
+        try{
+            ftpClient = connectToFTPClient();
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+            result = ftpClient.storeFile(fileName, inputStream);
+            ftpClient.storeFileStream("");
+            inputStream.close();
+
+            ftpClient.logout();
+
+            return result;
+        } catch (Exception e ){
+            System.out.println("Error downloading the file!");
+        } finally {
+            disconnect(ftpClient);
+        }
+
+        return result;
+    }
+
+    public void disconnect(FTPClient ftpClient) {
+        if (!ftpClient.isConnected()) {
+            return;
+        }
+        try {
+            ftpClient.disconnect();
+        } catch (Exception e) {
+            System.out.println("Error disconnecting FTP!");
+        }
+    }
 }
