@@ -52,9 +52,19 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
                                         <li v-bind:id='buildId(criterij_lvl5.id,criterij_lvl5.criteriaLevel)' v-for="criterij_lvl5 in criteria_level(5,criterij_lvl4)">{{criterij_lvl5.name}}
 
                                             <ul v-if="criteria_level(6,criterij_lvl5) != '' ">
-                                                <li v-bind:id='buildId(criterij_lvl5.id,criterij_lvl5.criteriaLevel)' v-for="criterij_lvl6 in criteria_level(6,criterij_lvl5)">{{criterij_lvl6.name}}
+                                                <li v-bind:id='buildId(criterij_lvl6.id,criterij_lvl6.criteriaLevel)' v-for="criterij_lvl6 in criteria_level(6,criterij_lvl5)">{{criterij_lvl6.name}}
+
+                                                    <ul v-if="criteria_level(7,criterij_lvl6) != '' ">
+                                                        <li v-bind:id='buildId(criterij_lvl7.id,criterij_lvl7.criteriaLevel)' v-for="criterij_lvl7 in criteria_level(7,criterij_lvl6)">{{criterij_lvl7.name}}
+
+                                                            <ul v-if="criteria_level(8,criterij_lvl7) != '' ">
+                                                                <li v-bind:id='buildId(criterij_lvl8.id,criterij_lvl8.criteriaLevel)' v-for="criterij_lvl8 in criteria_level(8,criterij_lvl7)">{{criterij_lvl8.name}}
 
 
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
                                                 </li>
                                             </ul>
                                         </li>

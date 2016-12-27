@@ -13,6 +13,7 @@
             addable: false,
             i18n: {
                 deleteNull: 'Select a node to delete',
+                deleteMultiple: 'Only one node can be deleted at one time',
                 deleteConfirmation: 'Delete this node?',
                 confirmButtonLabel: 'Okay',
                 editNull: 'Select a node to edit',
@@ -32,7 +33,7 @@
         var warningAlert = $('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong></strong><span class="alert-content"></span> </div> ');
         var dangerAlert = $('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong></strong><span class="alert-content"></span> </div> ');
 
-        var createInput = $('<div class="input-group"><input placeholder="Name.." type="text" class="form-control"><span class="input-group-btn"><button type="button" class="btn btn-default btn-success confirm"></button> </span><span class="input-group-btn"><button type="button" class="btn btn-default cancel"></button> </span></div><div><textarea class="form-control" placeholder="Description.."></textarea> </div> ');
+        var createInput = $('<div class="input-group"><input placeholder="Name.." type="text" class="form-control name"><span class="input-group-btn"><button type="button" class="btn btn-default btn-success confirm"></button> </span><span class="input-group-btn"><button type="button" class="btn btn-default cancel"></button> </span></div><div><input placeholder="Points.." type="number" class="form-control points"><textarea class="form-control" placeholder="Description.."></textarea> </div> ');
 
         options = $.extend(defaults, options);
 
@@ -75,7 +76,7 @@
                     $(createInput).find('.confirm').click(function () {
                         if ($(createInput).find('input').val() === '')
                             return;
-                        addNewCriteria($(createInput).find('input').val(),$(createInput).find('textarea').val());
+                        addNewCriteria($(createInput).find('input.name').val(),$(createInput).find('textarea').val(),$(createInput).find('input.points').val());
                         var selected = getSelectedItems();
                         var item = $('<li><span><span class="glyphicon glyphicon-file"></span><a href="javascript: void(0);">' + $(createInput).find('input').val() + '</a> </span></li>');
                         $(item).find(' > span > span').attr('title', options.i18n.collapseTip);
@@ -182,18 +183,22 @@
                     if (selected.length <= 0) {
                         $(easyTree).prepend(warningAlert);
                         $(easyTree).find('.alert .alert-content').html(options.i18n.deleteNull);
-                    } else {
+                    } else if(selected.find(' > ul').length != 0){
+                        $(easyTree).prepend(warningAlert);
+                        $(easyTree).find('.alert .alert-content').html(options.i18n.deleteMultiple);
+                    }
+                    else {
                         $(easyTree).prepend(dangerAlert);
                         $(easyTree).find('.alert .alert-content').html(options.i18n.deleteConfirmation)
                             .append('<a style="margin-left: 10px;" class="btn btn-default btn-danger confirm"></a>')
                             .find('.confirm').html(options.i18n.confirmButtonLabel);
                         $(easyTree).find('.alert .alert-content .confirm').on('click', function () {
+                            removeCriteria();
                             $(selected).find(' ul ').remove();
                             if($(selected).parent('ul').find(' > li').length <= 1) {
                                 $(selected).parents('li').removeClass('parent_li').find(' > span > span').removeClass('glyphicon-folder-open').addClass('glyphicon-file');
                                 $(selected).parent('ul').remove();
                             }
-                            removeCriteria();
                             $(selected).remove();
                             $(dangerAlert).remove();
                         });

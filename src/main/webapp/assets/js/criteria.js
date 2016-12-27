@@ -18,12 +18,10 @@ function getAllCriteria(){
         },
         success: function(data) {
             if((data.criteria != undefined)) {
-                var maxLevel = calculateMaxLevel(data.criteria);
                 if (criteriaVue != null) {
                     criteriaVue.criteria = data.criteria;
-                    criteriaVue.maxLevel = maxLevel;
                 } else {
-                    criteriaVue = newcriteriaVue(data.criteria,maxLevel);
+                    criteriaVue = newCriteriaVue(data.criteria);
                 }
             }
             $('.easy-tree').EasyTree({
@@ -36,12 +34,11 @@ function getAllCriteria(){
 }
 
 
-function newcriteriaVue(criteria,maxLevel){
+function newCriteriaVue(criteria){
     return new Vue({
         el: '#criteriaTree',
         data: {
-            criteria: criteria,
-            maxLevel: maxLevel
+            criteria: criteria
         },
         computed: {
             criteria1: function () {
@@ -69,17 +66,7 @@ function newcriteriaVue(criteria,maxLevel){
     })
 }
 
-function calculateMaxLevel(criteria){
-    maxLevel = 0;
-    for(i = 0;i<criteria.length;i++){
-        if(criteria[i].criteriaLevel > maxLevel){
-            maxLevel = criteria[i].criteriaLevel;
-        }
-    }
-    return maxLevel = new Array(maxLevel);
-}
-
-function addNewCriteria(name,description){
+function addNewCriteria(name,description,points){
     var ids = $('.li_selected')[0].id.split('_');
     $.ajax({
         type: "POST",
@@ -88,7 +75,7 @@ function addNewCriteria(name,description){
             criteriaId: Number(ids[0]),
             name: name,
             description: description,
-            points: 3,
+            points:Number(points),
             level: Number(ids[1]) + 1
         },
         success: function(data) {

@@ -53,7 +53,7 @@ public class CriteriaController {
                                           @RequestParam(value="points") Integer points,
                                           @RequestParam(value = "level") Integer level,Model model) {
         Criteria criteria = new Criteria();
-        criteria.setId(criteriaService.count() + 1);
+        criteria.setId(criteriaService.count() + 1);// napraviti na bazi inkrementalno
         criteria.setLastUpdateDate(new Date());
         criteria.setPoints(points);
         criteria.setDescription(description);
