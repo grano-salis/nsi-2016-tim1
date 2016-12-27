@@ -15,4 +15,7 @@ public interface CriteriaService {
     Criteria save(Criteria criteria);
 
     void remove(Long id);
+
+    long count();
+
 }

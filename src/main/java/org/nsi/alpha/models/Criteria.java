@@ -31,6 +31,9 @@ public class Criteria {
     Date lastUpdateDate;
     @Column(name = "CRITERIA_ID")
     Integer criteriaId;
+    @Column(name = "CRITERIA_LEVEL")
+    Integer criteriaLevel;
+
 
     public Long getId() {
         return id;
@@ -88,6 +91,14 @@ public class Criteria {
         this.criteriaId = criteriaId;
     }
 
+    public Integer getCriteriaLevel() {
+        return criteriaLevel;
+    }
+
+    public void setCriteriaLevel(Integer criteriaLevel) {
+        this.criteriaLevel = criteriaLevel;
+    }
+
     @Override
     public String toString() {
         return "Criteria{" +
@@ -98,6 +109,7 @@ public class Criteria {
                 ", insertDate=" + insertDate +
                 ", lastUpdateDate=" + lastUpdateDate +
                 ", criteriaId=" + criteriaId +
+                ", criteriaLevel=" + criteriaLevel +
                 '}';
     }
 }
