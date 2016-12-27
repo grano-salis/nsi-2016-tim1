@@ -82,6 +82,7 @@ public class CvItemController {
     }
 
     @RequestMapping(value = "/upload_cv_item_attachment", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
     public Map fileUpload(@RequestParam("file") MultipartFile mpFile, HttpServletResponse response) {
 
         Map model = new HashMap<>();

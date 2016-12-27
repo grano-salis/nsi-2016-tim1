@@ -45,16 +45,17 @@
       </div>
       <br><br>
       <div class="form-group">
-        <form id="cvItemFileUploadForm" method="POST" enctype="multipart/form-data"
-              action="/upload_cv_item_attachment" style="display: block">
+        <form id="cvItemFileUploadForm" method="POST" enctype="multipart/form-data" style="display: block"
+                action="/upload_cv_item_attachment">
 
           <label style="display: block">Attach file:</label>
           <input type="file" id="fileLoader" name="file" style="display: inline-block" readonly>
-          <button onclick="uploadCvItemAttachment()" id="uploadFile" class="btn btn-danger btn-file">Upload</button>
+          <div onclick="uploadCvItemAttachment()" id="uploadFile" class="btn btn-danger btn-file">Upload</div>
           <div id="fileUploadPercents" style="padding-left: 5px; display: inline-block">0%</div>
 
         </form>
         <button id="clearAttachment" onclick="deleteUpload()">Clear Attachment</button>
+        <br>
         <div id="uploadStatus"></div>
       </div>
 
