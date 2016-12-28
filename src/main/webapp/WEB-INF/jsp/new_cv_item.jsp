@@ -36,12 +36,14 @@
 
       <div class="form-group">
         <label class="form-control">Name: </label>
-        <input class="form-control" type="text"/>
+        <input style="border: 1px solid rgba(0, 0, 0, 0.15);
+                        background: white"
+               id="name" type="text"/>
       </div>
       <br><br>
       <div class="form-group">
         <label class="form-control">Description: </label>
-        <textarea class="form-control" rows="7" ></textarea>
+        <textarea class="form-control" id="description" rows="7" ></textarea>
       </div>
       <br><br>
       <div class="form-group">
@@ -58,14 +60,13 @@
         <br>
         <div id="uploadStatus"></div>
       </div>
-
+      <br><br><br><br>
+      <div class="btn btn-success btn-file pull-right" onclick="saveCvItem()">
+          Save CV Item
+      </div><br><br><br>
+      <div id="saveStatus"></div>
   </div>
 </section>
-
-<button class="btn-default btn-sm btn-icon glyphicon glyphicon-download"
-         style="border: none;"
-         onclick="downloadFile('file upload test.txt')">
-</button>
 
 <!-- Footer -->
 <footer id="footer">

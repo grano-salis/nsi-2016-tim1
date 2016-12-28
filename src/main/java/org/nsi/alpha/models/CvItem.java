@@ -11,8 +11,8 @@ public class CvItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO, generator="my_entity_seq_gen")
-    @SequenceGenerator(name="my_entity_seq_gen", sequenceName="MY_ENTITY_SEQ")
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="SEQ")
+    @SequenceGenerator(name="SEQ", sequenceName="NSI01.CV_ITEM_SEQ")
     @Column(name = "ID")
     Long id;
 

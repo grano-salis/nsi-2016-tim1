@@ -27,7 +27,7 @@ public class CvItemController {
     @Autowired
     CvItemService cvItemService;
 
-    String CURRENTLY_UPLOADED_FILENAME;
+    String CURRENTLY_UPLOADED_FILENAME = "";
 
     @RequestMapping(value = "cv_item/{id}", method = RequestMethod.GET)
     public ResponseEntity getById(@PathVariable Long id) {
@@ -47,13 +47,16 @@ public class CvItemController {
         return "new_cv_item";
     }
 
-    @RequestMapping(value = "/create_cv_item", method = RequestMethod.GET)
+    @RequestMapping(value = "/create_cv_item", method = RequestMethod.POST)
     public @ResponseBody Map createCvItem(
            @RequestParam(value = "name", required = false, defaultValue = "no_name") String name,
            @RequestParam(value = "description", required = false, defaultValue = "desc") String description,
            @RequestParam(value = "criteriaId", required = false, defaultValue = "0") Integer criteriaId){
 
         Map model = new HashMap<>();
+        if(CURRENTLY_UPLOADED_FILENAME == null){
+            CURRENTLY_UPLOADED_FILENAME = "";
+        }
 
         CvItem cvItem = new CvItem();
         cvItem.setName(name);
@@ -62,24 +65,28 @@ public class CvItemController {
 
         cvItem.setInsertDate(new Date());
 
-        //TODO: Za ovaj cvId ce se postaviti vrijednost ID-a ulogovanog profesora (vjerovatno neka veza profa-cv)
+        //TODO:
+        // Za ovaj cvId ce se postaviti vrijednost ID-a
+        // ulogovanog profesora (vjerovatno neka veza profa-cv)
         cvItem.setCvId(1);
 
-
         cvItem.setCriteriaId(1);
-        //cvItem.setId(cvItemService.count() + 1L);
-
-        cvItem.setAttachmentLink("link");
 
         CvItem savedCvItem = new CvItem();
 
         try{
             savedCvItem = cvItemService.save(cvItem);
+            savedCvItem.setAttachmentLink(
+                    savedCvItem.getId() + "_" + CURRENTLY_UPLOADED_FILENAME);
+            savedCvItem = cvItemService.save(savedCvItem);
+
+            model.put("savedCvItem", savedCvItem);
+            model.put("success", true);
         } catch(Exception e){
             e.printStackTrace();
+            model.put("exception", e);
+            return model;
         }
-
-        model.put("savedCvItem", savedCvItem);
 
         return model;
     }
@@ -148,6 +155,11 @@ public class CvItemController {
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(value = "/clear_saved_file", method = RequestMethod.GET)
+    public void clearSavedFile(){
+        CURRENTLY_UPLOADED_FILENAME = "";
     }
 
     public FTPClient connectToFTPClient() throws IOException {

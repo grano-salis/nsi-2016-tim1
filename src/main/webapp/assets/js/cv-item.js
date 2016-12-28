@@ -2,8 +2,6 @@
  * Created by edenasevic on 12/19/16.
  */
 
-var cvItem;
-
 var uploadCvItemAttachment = function() {
     var completed, percent, status, submitButton, cvItemFileUploadForm;
     percent = $("#fileUploadPercents");
@@ -66,6 +64,37 @@ function downloadFile(fileName) {
     );
 }
 
+var saveCvItem = function(){
+    var name = $("#name").val();
+    var desc = $("#description").val();
+
+    $.ajax({
+        url: '/create_cv_item',
+        type: 'POST',
+        headers: {
+            Accept: "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        data: { name: name, description: desc},
+        success: function(data) {
+            console.log(data);
+            $("#cvItemFileUploadForm")[0].reset();
+            $("#uploadStatus").html('');
+            $("#fileUploadPercents").html('');
+
+            if(data.success){
+                $("#saveStatus").html('<div class="alert alert-success">' +
+                    '<strong>CV Item saved successfully</strong>' +
+                    '\u000d\n<a href="#" class="close text-right" data-dismiss="alert" aria-label="close"></a>' +
+                    '</div>')
+            }
+        }
+    });
+};
+
 var deleteUpload = function() {
-    console.log("Radi funkcija!")
+    $("#cvItemFileUploadForm")[0].reset();
+    $("#uploadStatus").html('');
+    $("#fileUploadPercents").html('');
+    $.ajax('/clear_saved_file');
 };
