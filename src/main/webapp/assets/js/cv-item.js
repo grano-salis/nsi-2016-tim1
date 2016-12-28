@@ -59,6 +59,13 @@ var uploadCvItemAttachment = function() {
     });
 };
 
+function downloadFile(fileName) {
+    window.open(
+        "/download_cv_item_attachment?fileName=" + fileName,
+        '_blank'
+    );
+}
+
 var deleteUpload = function() {
     console.log("Radi funkcija!")
 };

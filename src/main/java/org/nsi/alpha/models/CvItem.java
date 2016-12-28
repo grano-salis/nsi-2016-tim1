@@ -1,9 +1,6 @@
 package org.nsi.alpha.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +11,8 @@ public class CvItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="my_entity_seq_gen")
+    @SequenceGenerator(name="my_entity_seq_gen", sequenceName="MY_ENTITY_SEQ")
     @Column(name = "ID")
     Long id;
 
@@ -35,9 +34,6 @@ public class CvItem implements Serializable {
     @Column(name = "LAST_UPDATE_DATE")
     Date lastUpdateDate;
 
-    @Column(name = "CV_ITEM_ID")
-    Integer cvItemId;
-
     @Column(name = "CRITERIA_ID")
     Integer criteriaId;
 
@@ -46,6 +42,9 @@ public class CvItem implements Serializable {
 
     @Column(name = "STATUS_ID")
     Integer statusId;
+
+    @Column(name = "ATTACHMENT_LINK")
+    String attachmentLink;
 
     public CvItem() {
     }
@@ -106,14 +105,6 @@ public class CvItem implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Integer getCvItemId() {
-        return cvItemId;
-    }
-
-    public void setCvItemId(Integer cvItemId) {
-        this.cvItemId = cvItemId;
-    }
-
     public Integer getCriteriaId() {
         return criteriaId;
     }
@@ -138,6 +129,14 @@ public class CvItem implements Serializable {
         this.statusId = statusId;
     }
 
+    public String getAttachmentLink() {
+        return attachmentLink;
+    }
+
+    public void setAttachmentLink(String attachmentLink) {
+        this.attachmentLink = attachmentLink;
+    }
+
     @Override
     public String toString() {
         return "CvItem{" +
@@ -148,10 +147,10 @@ public class CvItem implements Serializable {
                 ", endDate=" + endDate +
                 ", insertDate=" + insertDate +
                 ", lastUpdateDate=" + lastUpdateDate +
-                ", cvItemId=" + cvItemId +
                 ", criteriaId=" + criteriaId +
                 ", cvId=" + cvId +
                 ", statusId=" + statusId +
+                ", attachmentLink='" + attachmentLink + '\'' +
                 '}';
     }
 }

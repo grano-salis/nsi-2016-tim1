@@ -26,7 +26,6 @@ public class CvItemViewModel {
         endDate = cvItem.getEndDate();
         insertDate = cvItem.getInsertDate();
         lastUpdateDate = cvItem.getLastUpdateDate();
-        cvItemId = cvItem.getCvItemId();
         criteriaId = cvItem.getCriteriaId();
         cvId = cvItem.getCvId();
         statusId = cvItem.getStatusId();

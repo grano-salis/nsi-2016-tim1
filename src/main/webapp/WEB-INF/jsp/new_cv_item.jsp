@@ -54,13 +54,18 @@
           <div id="fileUploadPercents" style="padding-left: 5px; display: inline-block">0%</div>
 
         </form>
-        <button id="clearAttachment" onclick="deleteUpload()">Clear Attachment</button>
+        <div id="clearAttachment" class="btn btn-info btn-file" onclick="deleteUpload()">Clear Attachment</div>
         <br>
         <div id="uploadStatus"></div>
       </div>
 
   </div>
 </section>
+
+<button class="btn-default btn-sm btn-icon glyphicon glyphicon-download"
+         style="border: none;"
+         onclick="downloadFile('file upload test.txt')">
+</button>
 
 <!-- Footer -->
 <footer id="footer">

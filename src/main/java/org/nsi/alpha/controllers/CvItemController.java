@@ -27,6 +27,8 @@ public class CvItemController {
     @Autowired
     CvItemService cvItemService;
 
+    String CURRENTLY_UPLOADED_FILENAME;
+
     @RequestMapping(value = "cv_item/{id}", method = RequestMethod.GET)
     public ResponseEntity getById(@PathVariable Long id) {
 
@@ -47,36 +49,37 @@ public class CvItemController {
 
     @RequestMapping(value = "/create_cv_item", method = RequestMethod.GET)
     public @ResponseBody Map createCvItem(
-            @RequestParam(value = "name", required = false, defaultValue = "no_name") String name,
-            @RequestParam(value = "description", required = false, defaultValue = "desc") String description){
+           @RequestParam(value = "name", required = false, defaultValue = "no_name") String name,
+           @RequestParam(value = "description", required = false, defaultValue = "desc") String description,
+           @RequestParam(value = "criteriaId", required = false, defaultValue = "0") Integer criteriaId){
 
         Map model = new HashMap<>();
 
         CvItem cvItem = new CvItem();
         cvItem.setName(name);
         cvItem.setDescription(description);
-        cvItem.setInsertDate(new Date()); //Stavka unesena upravo u ovom trenutku
-
-        //Po defaultu ide 1 koji ce predstavljati status PENDING (preostali statusi su APPROVED i DECLINED)
         cvItem.setStatusId(1);
+
+        cvItem.setInsertDate(new Date());
 
         //TODO: Za ovaj cvId ce se postaviti vrijednost ID-a ulogovanog profesora (vjerovatno neka veza profa-cv)
         cvItem.setCvId(1);
 
-        //TODO: Kada budemo imali drvo za odabir kriterija, dodati i ovo kao parametar kontrolera
+
         cvItem.setCriteriaId(1);
+        //cvItem.setId(cvItemService.count() + 1L);
 
-        //TODO: Definisati sta raditi sa ovim
-        //cvItem.setCvItemId();
-        cvItem.setId(3L);
+        cvItem.setAttachmentLink("link");
 
-        try {
-            connectToFTPClient();
-        } catch (IOException e) {
+        CvItem savedCvItem = new CvItem();
+
+        try{
+            savedCvItem = cvItemService.save(cvItem);
+        } catch(Exception e){
             e.printStackTrace();
         }
 
-        //model.put("savedCvItem", cvItemService.save(cvItem));
+        model.put("savedCvItem", savedCvItem);
 
         return model;
     }
@@ -91,6 +94,7 @@ public class CvItemController {
 
         try {
             uploadSucceded = uploadFile(mpFile.getInputStream(), mpFile.getOriginalFilename());
+            CURRENTLY_UPLOADED_FILENAME = mpFile.getOriginalFilename();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,26 +103,25 @@ public class CvItemController {
 
         return model;
     }
+
+    @RequestMapping(value = "/download_cv_item_attachment", method = RequestMethod.GET)
+    @ResponseBody
+    public void fileDownload(@RequestParam("fileName") String fileName,
+                            HttpServletResponse response){
+        try{
+            response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
+
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(response.getOutputStream());
+            downloadFile(bufferedOutputStream, fileName);
+            bufferedOutputStream.close();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
-
-        CvItem cvItem = new CvItem();
-        cvItem.setId(1L);
-        cvItem.setName("Ilvaana");
-        cvItem.setDescription("test");
-        Date d = new Date();
-        cvItem.setStartDate(d);
-        cvItem.setEndDate(d);
-        cvItem.setInsertDate(d);
-        cvItem.setLastUpdateDate(d);
-        cvItem.setCvId(1);
-        cvItem.setStatusId(1);
-        cvItem.setCvItemId(1);
-        cvItem.setCriteriaId(1);
-
-        cvItemService.save(cvItem);
-
         model.put("cvItems", cvItemService.findAll());
         return model;
     }
