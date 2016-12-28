@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>NSI - Alpha</title>
   <meta charset="utf-8" />
@@ -10,12 +10,22 @@
 
 <!-- Header -->
 <header id="header" class="alt">
-  <h1 style="margin-right:4%;margin-left:4%;"><strong><a href="index">Professor Evaluator</a></strong> by Alpha NSI</h1>
+  <h1 style="margin-right:4%;margin-left:4%;"><strong><a href="index">Professor Evaluator</a></strong> by Alpha NSI
+   </h1>
   <nav id="nav">
     <ul>
-      <li style="display:inline"><a href="index">Home</a></li>
-      <li style="display:inline"><a href="professors">Professors</a></li>
-      <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
+        <li style="display:inline"><a href="index">Home</a></li>
+        <li style="display:inline"><a href="professors">Professors</a></li>
+        <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
+        <li style="display:inline;margin-right:42%">
+            <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="login" th:action="@{/logout}"
+                  method="post">
+                <input type="submit" value="Logout"/>
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+            </form>
+        </li>
     </ul>
   </nav>
 </header>
