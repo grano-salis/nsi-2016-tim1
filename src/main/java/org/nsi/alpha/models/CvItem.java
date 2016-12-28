@@ -35,9 +35,6 @@ public class CvItem implements Serializable {
     @Column(name = "LAST_UPDATE_DATE")
     Date lastUpdateDate;
 
-    @Column(name = "CV_ITEM_ID")
-    Integer cvItemId;
-
     @Column(name = "CRITERIA_ID")
     Integer criteriaId;
 
@@ -106,14 +103,6 @@ public class CvItem implements Serializable {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Integer getCvItemId() {
-        return cvItemId;
-    }
-
-    public void setCvItemId(Integer cvItemId) {
-        this.cvItemId = cvItemId;
-    }
-
     public Integer getCriteriaId() {
         return criteriaId;
     }
@@ -148,7 +137,6 @@ public class CvItem implements Serializable {
                 ", endDate=" + endDate +
                 ", insertDate=" + insertDate +
                 ", lastUpdateDate=" + lastUpdateDate +
-                ", cvItemId=" + cvItemId +
                 ", criteriaId=" + criteriaId +
                 ", cvId=" + cvId +
                 ", statusId=" + statusId +
