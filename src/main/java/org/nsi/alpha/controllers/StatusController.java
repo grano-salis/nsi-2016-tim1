@@ -6,6 +6,8 @@ import org.nsi.alpha.services.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -14,13 +16,18 @@ import java.util.Map;
 /**
  * Created by ekusundzija on 17/11/16.
  */
-@RestController
+@Controller
 @RequestMapping(value = "/status")
 public class StatusController {
 
 
     @Autowired
     StatusService statusService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String getStatusView(Model model){
+        return "status";
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody Map getById(@PathVariable Long id) {
@@ -30,17 +37,19 @@ public class StatusController {
         return model;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value ="/all", method = RequestMethod.GET)
     public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
 
-        Status status = new Status();
-        status.setId(1L);
-        status.setValue("ilvana");
-
-        statusService.save(status);
-
         model.put("status", statusService.findAll());
+        return model;
+    }
+
+    @RequestMapping(value ="/bystatus", method = RequestMethod.GET)
+    public @ResponseBody Map getByStatus(@RequestParam("status") String status) {
+        Map model = new HashMap<>();
+
+        model.put("status", statusService.findItemsByStatus(status));
         return model;
     }
 

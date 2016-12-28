@@ -63,6 +63,7 @@ public class CvItemController {
             CvItemViewModel cvItemViewModel = new CvItemViewModel(savedCvItem);
             return new ResponseEntity(cvItemViewModel, HttpStatus.OK);
         } catch (Exception e) {
+
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
