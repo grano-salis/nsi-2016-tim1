@@ -46,7 +46,6 @@ public class CvItemController {
         cvItem.setLastUpdateDate(d);
         cvItem.setCvId(1);
         cvItem.setStatusId(1);
-        cvItem.setCvItemId(1);
         cvItem.setCriteriaId(1);
 
         cvItemService.save(cvItem);

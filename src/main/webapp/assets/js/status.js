@@ -62,7 +62,6 @@ function newPendingItemsVue(status){
                     + '"endDate":' + tempObj.endDate +','
                     + '"insertDate":' + tempObj.insertDate +','
                     + '"lastUpdateDate":' + (new Date).getTime() +','
-                    + '"cvItemId":' + tempObj.cvItemId +','
                     + '"criteriaId":' + tempObj.criteriaId +','
                     + '"cvId":' + tempObj.cvId +','
                     + '"statusId":' + tempObj.statusId

@@ -13,7 +13,6 @@ public class CvItemViewModel {
     Date endDate;
     Date insertDate;
     Date lastUpdateDate;
-    Integer cvItemId;
     Integer criteriaId;
     Integer cvId;
     Integer statusId;
@@ -26,7 +25,6 @@ public class CvItemViewModel {
         endDate = cvItem.getEndDate();
         insertDate = cvItem.getInsertDate();
         lastUpdateDate = cvItem.getLastUpdateDate();
-        cvItemId = cvItem.getCvItemId();
         criteriaId = cvItem.getCriteriaId();
         cvId = cvItem.getCvId();
         statusId = cvItem.getStatusId();
@@ -78,7 +76,6 @@ public class CvItemViewModel {
                 ", endDate=" + endDate +
                 ", insertDate=" + insertDate +
                 ", lastUpdateDate=" + lastUpdateDate +
-                ", cvItemId=" + cvItemId +
                 ", criteriaId=" + criteriaId +
                 ", cvId=" + cvId +
                 ", statusId=" + statusId +
@@ -103,14 +100,6 @@ public class CvItemViewModel {
 
     public void setLastUpdateDate(Date lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
-    }
-
-    public Integer getCvItemId() {
-        return cvItemId;
-    }
-
-    public void setCvItemId(Integer cvItemId) {
-        this.cvItemId = cvItemId;
     }
 
     public Integer getCriteriaId() {
