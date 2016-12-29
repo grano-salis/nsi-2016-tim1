@@ -3272,6 +3272,189 @@ button:disabled,
 	background-image: url(../img/expanded.png);
 }
 
+
+
+
+
+
+/* Style the list */
+.tabstatus {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #a0f5c5;
+}
+
+/* Float the list items side by side */
+.tabstatus li {
+	float: left;
+	width: 33.333333333333%;
+}
+
+/* Style the links inside the list items */
+.tabstatus li a {
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-size: 17px;
+	width: 100%;
+}
+
+/* Change background color of links on hover */
+.tabstatus li:hover {
+	background-color: #88e1b0;
+}
+
+
+/* Create an active/current tablink class */
+.tabstatus li:focus, .active {
+	background-color: #6cc091;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.studentServiceItems tr.header {
+	font-size: 20px;
+}
+
+th.centered {
+	text-align: center !important;
+}
+
+.approveItem {
+	background-color: #6cc091 !important;
+	color: white !important;
+	box-shadow: inset 0 0 0 3px white !important;
+	margin-top: 9px !important;
+
+}
+
+.rejectItem {
+	background-color: #f96161 !important;
+	color: white !important;
+	box-shadow: inset 0 0 0 3px white !important;
+	margin-top: 9px !important;
+}
+
+.approveItem:hover {
+	box-shadow: inset 0 0 10px grey !important;
+}
+
+.rejectItem:hover {
+	box-shadow: inset 0 0 10px grey !important;
+}
+
+#Rejected th {
+	width: 25% !important;
+}
+
+#Approved th {
+	width: 25% !important;
+}
+.hover-link:hover {
+	background-color: rgba(108, 192, 145, 0.15);
+}
+
+
+
+
+
+/* Style the list */
+.tabstatus {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #a0f5c5;
+}
+
+/* Float the list items side by side */
+.tabstatus li {
+	float: left;
+	width: 33.333333333333%;
+}
+
+/* Style the links inside the list items */
+.tabstatus li a {
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-size: 17px;
+	width: 100%;
+}
+
+/* Change background color of links on hover */
+.tabstatus li:hover {
+	background-color: #88e1b0;
+}
+
+
+/* Create an active/current tablink class */
+.tabstatus li:focus, .active {
+	background-color: #6cc091;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.studentServiceItems tr.header {
+	font-size: 20px;
+}
+
+th.centered {
+	text-align: center !important;
+}
+
+.approveItem {
+	background-color: #6cc091 !important;
+	color: white !important;
+	box-shadow: inset 0 0 0 3px white !important;
+	margin-top: 9px !important;
+
+}
+
+.rejectItem {
+	background-color: #f96161 !important;
+	color: white !important;
+	box-shadow: inset 0 0 0 3px white !important;
+	margin-top: 9px !important;
+}
+
+.approveItem:hover {
+	box-shadow: inset 0 0 10px grey !important;
+}
+
+.rejectItem:hover {
+	box-shadow: inset 0 0 10px grey !important;
+}
+
+#Rejected th {
+	width: 25% !important;
+}
+
+#Approved th {
+	width: 25% !important;
+}
 .hover-link:hover {
 	background-color: rgba(108, 192, 145, 0.15);
 }
