@@ -1,24 +1,31 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>NSI - Alpha</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body class="landing">
-
 <!-- Header -->
 <header id="header" class="alt">
-    <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index.html">Professor Evaluator</a></strong> by Alpha NSI</h1>
+    <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index.html">Professor Evaluator</a></strong> by Alpha
+        NSI</h1>
     <nav id="nav">
         <ul>
             <li style="display:inline"><a href="index">Home</a></li>
             <li style="display:inline"><a href="professors">Professors</a></li>
             <li style="display:inline"><a href="status">Student Service</a></li>
             <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
+            <li style="display:inline;margin-right:42%">
+                <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="login" th:action="@{/logout}" method="post">
+                    <input type="submit" value="Logout" />
+                    <input type="hidden"
+                           name="${_csrf.parameterName}"
+                           value="${_csrf.token}"/>
+                </form>
+            </li>
         </ul>
     </nav>
 </header>
@@ -160,7 +167,7 @@
 <script type="text/javascript">
     function prepareList() {
         $('#expList').find('li:has(ul)')
-                .click( function(event) {
+                .click(function (event) {
                     if (this == event.target) {
                         $(this).toggleClass('expanded');
                         $(this).children('ul').toggle('medium');
@@ -169,9 +176,10 @@
                 })
                 .addClass('collapsed')
                 .children('ul').hide();
-    };
+    }
+    ;
 
-    $(document).ready( function() {
+    $(document).ready(function () {
         prepareList();
     });
 </script>

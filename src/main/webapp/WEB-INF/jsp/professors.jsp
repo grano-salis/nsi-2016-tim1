@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" content="text/html; charset=UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" content="text/html; charset=UTF-8">
 <head>
   <title>NSI - Alpha</title>
   <meta charset="utf-8" />
@@ -7,16 +7,24 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="landing">
-
 <!-- Header -->
 <header id="header" class="alt">
-  <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index.html">Professor Evaluator</a></strong> by Alpha NSI</h1>
+  <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index.html">Professor Evaluator</a></strong> by Alpha NSI
+  </h1>
   <nav id="nav">
     <ul>
       <li style="display:inline"><a href="index">Home</a></li>
       <li style="display:inline"><a href="professors">Professors</a></li>
       <li style="display:inline"><a href="status">Student Service</a></li>
       <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
+      <li style="display:inline;margin-right:42%">
+        <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="login" th:action="@{/logout}" method="post">
+          <input type="submit" value="Logout" />
+          <input type="hidden"
+                 name="${_csrf.parameterName}"
+                 value="${_csrf.token}"/>
+        </form>
+      </li>
     </ul>
   </nav>
 </header>
