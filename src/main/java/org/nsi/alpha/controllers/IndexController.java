@@ -1,5 +1,7 @@
 package org.nsi.alpha.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class IndexController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping("/index")
     public String hello(Model model) {
@@ -31,6 +34,7 @@ public class IndexController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+        LOGGER.info(String.format("User %s successfully logged out of system.", auth.getCredentials()));
         return "redirect:/login?logout";
     }
 }

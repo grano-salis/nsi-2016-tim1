@@ -3,6 +3,8 @@ package org.nsi.alpha.controllers;
 import org.nsi.alpha.models.Cv;
 import org.nsi.alpha.models.viewModels.CvViewModel;
 import org.nsi.alpha.services.CvService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/cv")
 public class CvController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CvController.class);
 
     @Autowired
     CvService cvService;
@@ -25,8 +28,10 @@ public class CvController {
         try {
             Cv cv = cvService.findById(id);
             CvViewModel cvViewModel = new CvViewModel(cv);
+            LOGGER.info(String.format("Action called - successfully pulled cv with id %s.", id));
             return new ResponseEntity(cvViewModel, HttpStatus.OK);
         } catch (Exception e) {
+            LOGGER.error(String.format("Action failed - cv with id %s could not be pulled.", id));
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }

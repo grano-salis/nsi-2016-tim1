@@ -4,6 +4,8 @@ import org.nsi.alpha.models.CvItem;
 import org.nsi.alpha.models.Status;
 import org.nsi.alpha.models.viewModels.StatusViewModel;
 import org.nsi.alpha.services.StatusService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import java.util.*;
 @Controller
 @RequestMapping(value = "/status")
 public class StatusController {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(StatusController.class);
 
     @Autowired
     StatusService statusService;
@@ -32,7 +34,7 @@ public class StatusController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
-
+        LOGGER.info(String.format("Action called - successfully pulled status with id %s.", id));
         model.put("status", statusService.findById(id));
         return model;
     }
@@ -40,7 +42,7 @@ public class StatusController {
     @RequestMapping(value ="/all", method = RequestMethod.GET)
     public @ResponseBody Map getAll() {
         Map model = new HashMap<>();
-
+        LOGGER.info(String.format("Action called - successfully pulled statuses."));
         model.put("status", statusService.findAll());
         return model;
     }
@@ -65,8 +67,10 @@ public class StatusController {
         try {
             Status savedStatus = statusService.save(statusSaveRequest);
             StatusViewModel statusViewModel = new StatusViewModel(savedStatus);
+            LOGGER.info(String.format("Action called - successfully saved status with id %s.", statusViewModel.getId()));
             return new ResponseEntity(statusViewModel, HttpStatus.OK);
         } catch (Exception e) {
+            LOGGER.error(String.format("Action failed - successfully saved status with id %s.", statusSaveRequest.getId()));
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
