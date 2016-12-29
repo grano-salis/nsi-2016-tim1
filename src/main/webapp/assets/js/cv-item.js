@@ -71,10 +71,6 @@ var saveCvItem = function(){
     $.ajax({
         url: '/create_cv_item',
         type: 'POST',
-        headers: {
-            Accept: "application/json; charset=utf-8",
-            "Content-Type": "application/json; charset=utf-8"
-        },
         data: { name: name, description: desc},
         success: function(data) {
             console.log(data);

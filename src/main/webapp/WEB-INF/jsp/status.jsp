@@ -66,7 +66,7 @@
                     <th v-text="cvItem.description"></th>
                     <th v-text="convertDate(cvItem.insertDate)"></th>
                     <th>
-                        <button @click="downloadAttachment(cvItem.attachmentLink)" class="attachemtn">Download</button>
+                        <button @click="downloadAttachment(cvItem.attachmentLink)" class="attachment">Download</button>
                     </th>
                     <th class="centered">
                         <button @click="changeStatus(cvItem, 2)" class="approveItem">Approve</button>

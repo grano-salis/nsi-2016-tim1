@@ -37,7 +37,7 @@
       <div class="form-group">
         <label class="form-control">Name: </label>
         <input style="border: 1px solid rgba(0, 0, 0, 0.15);
-                        background: white"
+                        background: white; color: #55595c"
                id="name" type="text"/>
       </div>
       <br><br>
