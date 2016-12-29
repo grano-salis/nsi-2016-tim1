@@ -17,22 +17,22 @@ background: #eee;
 </style>
 </head>
 <body>
-<div id="jquery-script-menu">
+<%--<div id="jquery-script-menu">
 <div class="jquery-script-center">
-<div class="jquery-script-ads"><script type="text/javascript"><!--
-google_ad_client = "ca-pub-2783044520727903";
-/* jQuery_demo */
+&lt;%&ndash;<div class="jquery-script-ads"><script type="text/javascript"><!--
+/*google_ad_client = "ca-pub-2783044520727903";
+/!* jQuery_demo *!/
 google_ad_slot = "2780937993";
 google_ad_width = 728;
-google_ad_height = 90;
+google_ad_height = 90;*/
 //-->
 </script>
-<script type="text/javascript"
+&lt;%&ndash;<script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script></div>
+</script>&ndash;%&gt;</div>&ndash;%&gt;
 <div class="jquery-script-clear"></div>
 </div>
-</div>
+</div>--%>
 <div class="col-md-3" style="margin-top:150px;">
 <h3 class="text-success">Easy Tree Example</h3>
 <div id="criteriaTree" class="easy-tree">

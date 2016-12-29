@@ -67,11 +67,14 @@ function downloadFile(fileName) {
 var saveCvItem = function(){
     var name = $("#name").val();
     var desc = $("#description").val();
+    if($(".li_selected") != null && $(".li_selected").prop('id') != null){
+        var criteriaId = $(".li_selected").prop('id').split("_")[0];
+    }
 
     $.ajax({
         url: '/create_cv_item',
         type: 'POST',
-        data: { name: name, description: desc},
+        data: { name: name, description: desc, criteriaId: criteriaId},
         success: function(data) {
             console.log(data);
             $("#cvItemFileUploadForm")[0].reset();
