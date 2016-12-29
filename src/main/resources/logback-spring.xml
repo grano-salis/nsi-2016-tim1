@@ -1,9 +1,9 @@
 <configuration>
 
-    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>nsi-alpha.info.log</file>
+    <appender name="info" class="ch.qos.logback.core.ConsoleAppender">
+        <!--<file>nsi-alpha.info.log</file>-->
 
-        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <fileNamePattern>nsi-alpha.%i.info.log</fileNamePattern>
             <minIndex>1</minIndex>
             <maxIndex>15</maxIndex>
@@ -11,27 +11,26 @@
 
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <maxFileSize>20MB</maxFileSize>
-        </triggeringPolicy>
+        </triggeringPolicy>-->
 
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger [%file:%line] - %msg%n</pattern>
         </encoder>
 
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
-        </filter>
+        </filter>-->
     </appender>
 
-    <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>nsi-alpha.warn.log</file>
+    <appender name="warn" class="ch.qos.logback.core.ConsoleAppender">
+        <!--<file>nsi-alpha.warn.log</file>-->
 
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger [%file:%line] %X{transid} - %msg%n</pattern>
         </encoder>
-
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>WARN</level>
-        </filter>
+        </filter>-->
     </appender>
 
     <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">

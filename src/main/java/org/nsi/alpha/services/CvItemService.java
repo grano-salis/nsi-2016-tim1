@@ -12,4 +12,6 @@ public interface CvItemService {
     CvItem save(CvItem cvItem);
 
     void remove(Long id);
+
+    long count();
 }
