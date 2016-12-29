@@ -69,7 +69,6 @@ public class CvItemController {
         // Za ovaj cvId ce se postaviti vrijednost ID-a
         // ulogovanog profesora (vjerovatno neka veza profa-cv)
         cvItem.setCvId(1);
-
         cvItem.setCriteriaId(1);
 
         CvItem savedCvItem = new CvItem();
