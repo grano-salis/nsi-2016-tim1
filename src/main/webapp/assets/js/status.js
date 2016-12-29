@@ -54,21 +54,17 @@ function newPendingItemsVue(status){
                 tempObj = JSON.parse(JSON.stringify(object));
                 tempObj.statusId = statusToChange;
                 console.log(tempObj);
-                var newObj = '{'
-                    + '"id":' + tempObj.id +','
-                    + '"name":"' + tempObj.name +'",'
-                    + '"description":"' + tempObj.description +'",'
-                    + '"startDate":' + tempObj.startDate +','
-                    + '"endDate":' + tempObj.endDate +','
-                    + '"insertDate":' + tempObj.insertDate +','
-                    + '"lastUpdateDate":' + (new Date).getTime() +','
-                    + '"cvItemId":' + tempObj.cvItemId +','
-                    + '"criteriaId":' + tempObj.criteriaId +','
-                    + '"cvId":' + tempObj.cvId +','
-                    + '"statusId":' + tempObj.statusId
-                    +'}';
-
-                console.log(newObj);
+                var newCvItem = {};
+                newCvItem.id = tempObj.id;
+                newCvItem.name = tempObj.name;
+                newCvItem.description = tempObj.description;
+                newCvItem.startDate = tempObj.startDate;
+                newCvItem.endDate = tempObj.endDate;
+                newCvItem.insertDate = tempObj.insertDate;
+                newCvItem.lastUpdateDate = (new Date).getTime();
+                newCvItem.criteriaId = tempObj.criteriaId;
+                newCvItem.cvId = tempObj.cvId;
+                newCvItem.statusId = tempObj.statusId;
 
                 $.ajax({
                     headers: {
@@ -77,7 +73,7 @@ function newPendingItemsVue(status){
                     },
                     type: "POST",
                     url: "/cvItem/save",
-                    data: newObj,
+                    data: JSON.stringify(newCvItem),
                     success: function(data) {
                         console.log(data.status);
                         getAllStatuses();
@@ -92,6 +88,13 @@ function newPendingItemsVue(status){
             convertDate: function(epochDate) {
                 tempDate =  new Date(epochDate);
                 return tempDate.getFullYear().toString() + "/" + (tempDate.getMonth() + 1).toString() + "/" + tempDate.getDate();
+            },
+            downloadAttachment: function(attachmentLink) {
+                var fileName = attachmentLink.split("_")[1];
+                window.open(
+                    "/download_cv_item_attachment?fileName=" + fileName,
+                    '_blank'
+                );
             }
         }
     })

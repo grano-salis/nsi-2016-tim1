@@ -133,7 +133,7 @@ public class CvItemController {
         return model;
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/cvItem/save", method = RequestMethod.POST)
     public ResponseEntity saveCv(@RequestBody CvItem cvItemSaveRequest) {
 
         try {

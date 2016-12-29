@@ -44,21 +44,25 @@
         <div id="Pending" class="tabcontent">
             <table class="studentServiceItems">
                 <tr class="header">
-                    <th>CV Item name</th>
-                    <th>CV Item link</th>
+                    <th>Name</th>
+                    <th>Description</th>
                     <th>Date applied</th>
-                    <th class="centered">Approve</th>
-                    <th class="centered">Reject</th>
+                    <th class="centered">Attachment</th>
+                    <th class="centered"></th>
+                    <th class="centered"></th>
                 </tr>
                 <tr v-for="cvItem in pendingItems">
                     <th v-text="cvItem.name"></th>
-                    <th v-text="cvItem.description">/th>
-                    <th v-text="convertDate(cvItem.startDate)"></th>
-                    <th class="centered">
-                        <button @click="changeStatus(cvItem, 1)" class="approveItem">Approved</button>
+                    <th v-text="cvItem.description"></th>
+                    <th v-text="convertDate(cvItem.insertDate)"></th>
+                    <th>
+                        <button @click="downloadAttachment(cvItem.attachmentLink)" class="attachemtn">Download</button>
                     </th>
                     <th class="centered">
-                        <button @click="changeStatus(cvItem, 2)" class="rejectItem">Reject</button>
+                        <button @click="changeStatus(cvItem, 2)" class="approveItem">Approve</button>
+                    </th>
+                    <th class="centered">
+                        <button @click="changeStatus(cvItem, 3)" class="rejectItem">Reject</button>
                     </th>
                 </tr>
             </table>
@@ -67,17 +71,29 @@
         <div id="Approved" class="tabcontent">
             <table class="studentServiceItems">
                 <tr class="header">
-                    <th>CV Item name</th>
-                    <th>CV Item link</th>
+                    <th>Name</th>
+                    <th>Description</th>
                     <th>Date applied</th>
                     <th>Date approved</th>
+                    <th class="centered">Attachment</th>
+                    <th class="centered"></th>
+                    <th class="centered"></th>
                 </tr>
 
                 <tr v-for="cvItem in approvedItems">
                     <th v-text="cvItem.name"></th>
                     <th v-text="cvItem.description"></th>
-                    <th v-text="convertDate(cvItem.startDate)"></th>
+                    <th v-text="convertDate(cvItem.insertDate)"></th>
                     <th v-text="convertDate(cvItem.lastUpdateDate)"></th>
+                    <th>
+                        <button @click="downloadAttachment(cvItem.attachmentLink)" class="attachemtn">Download</button>
+                    </th>
+                    <th class="centered">
+                        <button @click="changeStatus(cvItem, 1)" class="pendItem">Pend</button>
+                    </th>
+                    <th class="centered">
+                        <button @click="changeStatus(cvItem, 3)" class="rejectItem">Reject</button>
+                    </th>
                 </tr>
             </table>
         </div>
@@ -85,25 +101,32 @@
         <div id="Rejected" class="tabcontent">
             <table class="studentServiceItems">
                 <tr class="header">
-                    <th>CV Item name</th>
-                    <th>CV Item link</th>
+                    <th>Name</th>
+                    <th>Description</th>
                     <th>Date applied</th>
                     <th>Date approved</th>
+                    <th class="centered">Attachment</th>
+                    <th class="centered"></th>
+                    <th class="centered"></th>
                 </tr>
 
                 <tr v-for="cvItem in rejectedItems">
                     <th v-text="cvItem.name"></th>
                     <th v-text="cvItem.description"></th>
-                    <th v-text="convertDate(cvItem.startDate)"></th>
+                    <th v-text="convertDate(cvItem.insertDate)"></th>
                     <th v-text="convertDate(cvItem.lastUpdateDate)"></th>
+                    <th>
+                        <button @click="downloadAttachment(cvItem.attachmentLink)" class="attachemtn">Download</button>
+                    </th>
+                    <th class="centered">
+                        <button @click="changeStatus(cvItem, 1)" class="pendItem">Pend</button>
+                    </th>
+                    <th class="centered">
+                        <button @click="changeStatus(cvItem, 2)" class="approveItem">Approve</button>
+                    </th>
                 </tr>
             </table>
         </div>
-
-
-
-
-
     </div>
 </section>
 
