@@ -33,4 +33,9 @@ public class CvItemServiceImpl implements CvItemService {
     public void remove(Long id) {
         cvItemRepository.delete(id);
     }
+
+    @Override
+    public long count() {
+        return cvItemRepository.count();
+    }
 }

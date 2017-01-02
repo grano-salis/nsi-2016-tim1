@@ -2,6 +2,7 @@ package org.nsi.alpha.controllers;
 
 import org.nsi.alpha.models.Criteria;
 import org.nsi.alpha.models.viewModels.CriteriaViewModel;
+import org.nsi.alpha.repositories.CrieteriaRepository;
 import org.nsi.alpha.services.CriteriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,13 @@ public class CriteriaController {
         return "criteria";
     }
 
+    @RequestMapping(value = "/all",method = RequestMethod.GET)
+    public @ResponseBody Map getAll() {
+        Map model = new HashMap<>();
+        model.put("criteria", criteriaService.findAll());
+        return model;
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody Map getById(@PathVariable Long id) {
         Map model = new HashMap<>();
@@ -38,35 +46,23 @@ public class CriteriaController {
         return model;
     }
 
-    @RequestMapping(value ="/all", method = RequestMethod.GET)
-    public @ResponseBody Map getAll() {
-        Map model = new HashMap<>();
-
-        Criteria criteria = new Criteria();
-        criteria.setName("Ilvana");
-        criteria.setId(1L);
-        criteria.setLastUpdateDate(new Date());
-        criteria.setDescription("Ilvana");
-        criteria.setInsertDate(new Date());
-        criteria.setPoints(1);
-        criteria.setCriteriaId(1);
-
-        criteriaService.save(criteria);
-
-        model.put("criteria", criteriaService.findAll());
-        return model;
-    }
-
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResponseEntity saveCv(@RequestBody Criteria criteriaSaveItemRequest) {
-
-        try {
-            Criteria savedCriteria = criteriaService.save(criteriaSaveItemRequest);
-            CriteriaViewModel criteriaViewModel = new CriteriaViewModel(savedCriteria);
-            return new ResponseEntity(criteriaViewModel, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
+    public Model saveCriteria(@RequestParam(value="criteriaId") Integer criteriaId,
+                                          @RequestParam(value="name") String name,
+                                          @RequestParam(value="description") String description,
+                                          @RequestParam(value="points") Integer points,
+                                          @RequestParam(value = "level") Integer level,Model model) {
+        Criteria criteria = new Criteria();
+        criteria.setId(criteriaService.count() + 1);// napraviti na bazi inkrementalno
+        criteria.setLastUpdateDate(new Date());
+        criteria.setPoints(points);
+        criteria.setDescription(description);
+        criteria.setName(name);
+        criteria.setCriteriaId(criteriaId);
+        criteria.setInsertDate(new Date());
+        criteria.setCriteriaLevel(level);
+        criteriaService.save(criteria);
+        return model;
     }
 
     //ima constraint na criteria, pa se ne mogu item-i brisat

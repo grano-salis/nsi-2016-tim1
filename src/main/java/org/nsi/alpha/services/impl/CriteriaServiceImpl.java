@@ -34,4 +34,7 @@ public class CriteriaServiceImpl implements CriteriaService {
     public void remove(Long id) {
         crieteriaRepository.delete(id);
     }
+
+    @Override
+    public long count(){ return crieteriaRepository.count(); }
 }

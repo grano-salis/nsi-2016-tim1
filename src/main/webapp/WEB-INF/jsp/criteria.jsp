@@ -1,188 +1,117 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en">
 <head>
-    <title>NSI - Alpha</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
+<meta charset="UTF-8">
+<title>jQuery Easy Tree Example</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/easyTree.css">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="src/easyTree.js"></script>
+<style>
+body {
+background: #eee;
+}
+</style>
 </head>
-<body class="landing">
-<!-- Header -->
-<header id="header" class="alt">
-    <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index.html">Professor Evaluator</a></strong> by Alpha
-        NSI</h1>
-    <nav id="nav">
-        <ul>
-            <li style="display:inline"><a href="index">Home</a></li>
-            <li style="display:inline"><a href="professors">Professors</a></li>
-            <li style="display:inline"><a href="status">Student Service</a></li>
-            <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
-            <li style="display:inline;margin-right:42%">
-                <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="login" th:action="@{/logout}" method="post">
-                    <input type="submit" value="Logout" />
-                    <input type="hidden"
-                           name="${_csrf.parameterName}"
-                           value="${_csrf.token}"/>
-                </form>
-            </li>
-        </ul>
-    </nav>
-</header>
-<!-- Banner -->
-<section id="banner" style="padding-top: 8.6em;padding-bottom: 3em">
-    <div class="inner">
-        <header>
-            <h1>Criteria</h1>
-            <h3>Filtering professors via categories and subcategories</h3>
-        </header>
-    </div>
-</section>
-
-
-<!-- Three -->
-<section id="three" class="wrapper align-center">
-    <div class="inner flex">
-        <div id="listContainer">
-            <h3>List of criteria</h3>
-            <ul id="expList">
-                <li>Kriterij 1
-                    <ul>
-                        <li>Level 1.1
-                            <ul>
-                                <li>Sublevel 1.1.1</li>
-                                <li>Sublevel 1.1.2</li>
-                                <li>Sublevel 1.1.3</li>
-                            </ul>
-                        </li>
-                        <li>Level 1.2
-                            <ul>
-                                <li>Sublevel 1.2.1</li>
-                                <li>Sublevel 1.2.2</li>
-                            </ul>
-                        </li>
-                        <li>Level 1.3
-                            <ul>
-                                <li>Sublevel 1.2.1</li>
-                                <li>Sublevel 1.2.2</li>
-                                <li>Sublevel 1.2.3</li>
-                                <li>Sublevel 1.2.4</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Kriterij 2
-                    <ul>
-                        <li>Projekti
-                            <ul>
-                                <li>Projekat 1</li>
-                                <li>Projekat 2</li>
-                                <li>Projekat 3</li>
-                            </ul>
-                        </li>
-                        <li>Naucni radovi
-                            <ul>
-                                <li>Naucni rad 1</li>
-                                <li>Naucni rad 2</li>
-                            </ul>
-                        </li>
-                        <li>Patenti
-                            <ul>
-                                <li>Sublevel 2.1</li>
-                                <li>Sublevel 2.2</li>
-                                <li>Sublevel 2.3</li>
-                                <li>Sublevel 2.4</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>Kriterij 3
-                    <ul>
-                        <li>Projekti
-                            <ul>
-                                <li>Projekat 1</li>
-                                <li>Projekat 2</li>
-                                <li>Projekat 3</li>
-                            </ul>
-                        </li>
-                        <li>Naucni radovi
-                            <ul>
-                                <li>Naucni rad 1</li>
-                                <li>Naucni rad 2</li>
-                            </ul>
-                        </li>
-                        <li>Patenti
-                            <ul>
-                                <li>Patent 1</li>
-                                <li>Patent 2</li>
-                                <li>Patent 3</li>
-                                <li>Patent 4</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- Footer --><!--
-<footer id="footer">
-    <div class="inner">
-
-        <h3>Get in touch</h3>
-
-        <form action="#" method="post">
-
-            <div class="field half first">
-                <label for="name">Name</label>
-                <input name="name" id="name" type="text" placeholder="Name">
-            </div>
-            <div class="field half">
-                <label for="email">Email</label>
-                <input name="email" id="email" type="email" placeholder="Email">
-            </div>
-            <div class="field">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-            </div>
-            <ul class="actions">
-                <li><input value="Send Message" class="button alt" type="submit"></li>
-            </ul>
-        </form>
-
-        <div class="copyright">
-            &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
-        </div>
-
-    </div>
-</footer>
--->
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script type="text/javascript" src="listCollapse.js"></script>
-<script type="text/javascript">
-    function prepareList() {
-        $('#expList').find('li:has(ul)')
-                .click(function (event) {
-                    if (this == event.target) {
-                        $(this).toggleClass('expanded');
-                        $(this).children('ul').toggle('medium');
-                    }
-                    return false;
-                })
-                .addClass('collapsed')
-                .children('ul').hide();
-    }
-    ;
-
-    $(document).ready(function () {
-        prepareList();
-    });
+<body>
+<%--<div id="jquery-script-menu">
+<div class="jquery-script-center">
+&lt;%&ndash;<div class="jquery-script-ads"><script type="text/javascript"><!--
+/*google_ad_client = "ca-pub-2783044520727903";
+/!* jQuery_demo *!/
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;*/
+//-->
 </script>
+&lt;%&ndash;<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>&ndash;%&gt;</div>&ndash;%&gt;
+<div class="jquery-script-clear"></div>
+</div>
+</div>--%>
+<div class="col-md-3" style="margin-top:150px;">
+<h3 class="text-success">Easy Tree Example</h3>
+<div id="criteriaTree" class="easy-tree">
+    <ul>
+        <li v-bind:id='buildId(criterij_lvl1.id,criterij_lvl1.criteriaLevel)' v-for="criterij_lvl1 in criteria1">{{criterij_lvl1.name}}
+
+            <ul  v-if="criteria_level(2,criterij_lvl1) != '' ">
+                <li  v-bind:id='buildId(criterij_lvl2.id,criterij_lvl2.criteriaLevel)' v-for="criterij_lvl2 in criteria_level(2,criterij_lvl1)">{{criterij_lvl2.name}}
+
+                    <ul v-if="criteria_level(3,criterij_lvl2) != '' ">
+                        <li v-bind:id='buildId(criterij_lvl3.id,criterij_lvl3.criteriaLevel)' v-for="criterij_lvl3 in criteria_level(3,criterij_lvl2)">{{criterij_lvl3.name}}
+
+                            <ul v-if="criteria_level(4,criterij_lvl3) != '' ">
+                                <li v-bind:id='buildId(criterij_lvl4.id,criterij_lvl4.criteriaLevel)' v-for="criterij_lvl4 in criteria_level(4,criterij_lvl3)">{{criterij_lvl4.name}}
+
+                                    <ul v-if="criteria_level(5,criterij_lvl4) != '' ">
+                                        <li v-bind:id='buildId(criterij_lvl5.id,criterij_lvl5.criteriaLevel)' v-for="criterij_lvl5 in criteria_level(5,criterij_lvl4)">{{criterij_lvl5.name}}
+
+                                            <ul v-if="criteria_level(6,criterij_lvl5) != '' ">
+                                                <li v-bind:id='buildId(criterij_lvl6.id,criterij_lvl6.criteriaLevel)' v-for="criterij_lvl6 in criteria_level(6,criterij_lvl5)">{{criterij_lvl6.name}}
+
+                                                    <ul v-if="criteria_level(7,criterij_lvl6) != '' ">
+                                                        <li v-bind:id='buildId(criterij_lvl7.id,criterij_lvl7.criteriaLevel)' v-for="criterij_lvl7 in criteria_level(7,criterij_lvl6)">{{criterij_lvl7.name}}
+
+                                                            <ul v-if="criteria_level(8,criterij_lvl7) != '' ">
+                                                                <li v-bind:id='buildId(criterij_lvl8.id,criterij_lvl8.criteriaLevel)' v-for="criterij_lvl8 in criteria_level(8,criterij_lvl7)">{{criterij_lvl8.name}}
+
+
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</div>
+<script>
+//    (function ($) {
+//        function init() {
+//            $('.easy-tree').EasyTree({
+//                addable: true,
+//                editable: true,
+//                deletable: true
+//            });
+//        }
+//
+//        window.onload = init();
+//    })(jQuery)
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script src="assets/js/criteria.js"></script>
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="src/easyTree.js"></script>
+
+
 
 </body>
 </html>

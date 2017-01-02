@@ -1,5 +1,6 @@
 package org.nsi.alpha.controllers;
 
+import org.nsi.alpha.models.CvItem;
 import org.nsi.alpha.models.Status;
 import org.nsi.alpha.models.viewModels.StatusViewModel;
 import org.nsi.alpha.services.StatusService;
@@ -10,8 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by ekusundzija on 17/11/16.
@@ -49,8 +49,14 @@ public class StatusController {
     public @ResponseBody Map getByStatus(@RequestParam("status") String status) {
         Map model = new HashMap<>();
 
-        model.put("status", statusService.findItemsByStatus(status));
+        List<CvItem> cvItemArrayList = statusService.findItemsByStatus(status);
+
+        Collections.sort(cvItemArrayList, (cvItem1, cvItem2) -> cvItem2.getInsertDate().compareTo(cvItem1.getInsertDate()));
+
+        model.put("status", cvItemArrayList);
         return model;
+
+
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)

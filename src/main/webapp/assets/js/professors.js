@@ -28,6 +28,7 @@ function getAllProfessos(){
 }
 
 
+
 function newProfessorsVue(professors){
     return new Vue({
         el: '#three',
