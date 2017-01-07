@@ -1,8 +1,12 @@
 package org.nsi.alpha.controllers;
 
+import org.nsi.alpha.models.Cv;
 import org.nsi.alpha.models.CvItem;
+import org.nsi.alpha.models.CvItemWrapper;
 import org.nsi.alpha.models.Status;
 import org.nsi.alpha.models.viewModels.StatusViewModel;
+import org.nsi.alpha.services.CvItemService;
+import org.nsi.alpha.services.CvService;
 import org.nsi.alpha.services.StatusService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +29,9 @@ public class StatusController {
 
     @Autowired
     StatusService statusService;
+
+    @Autowired
+    CvService cvService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getStatusView(Model model){
@@ -55,7 +62,17 @@ public class StatusController {
 
         Collections.sort(cvItemArrayList, (cvItem1, cvItem2) -> cvItem2.getInsertDate().compareTo(cvItem1.getInsertDate()));
 
-        model.put("status", cvItemArrayList);
+        List<CvItemWrapper> cvWrapperArrayList = new ArrayList<CvItemWrapper>();
+
+        for (CvItem tempCvItem : cvItemArrayList) {
+            Cv tempCv = cvService.findById(tempCvItem.getCvId().longValue());
+            String tempProfName = tempCv.getName() + " " + tempCv.getSurname();
+            cvWrapperArrayList.add(new CvItemWrapper(tempCvItem, tempProfName));
+        }
+
+        model.put("status", cvWrapperArrayList);
+
+
         return model;
 
 
