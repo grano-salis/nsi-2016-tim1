@@ -10,56 +10,68 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="src/easyTree.js"></script>
-<style>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
 body {
 background: #eee;
 }
 </style>
 </head>
-<body>
-<%--<div id="jquery-script-menu">
-<div class="jquery-script-center">
-&lt;%&ndash;<div class="jquery-script-ads"><script type="text/javascript"><!--
-/*google_ad_client = "ca-pub-2783044520727903";
-/!* jQuery_demo *!/
-google_ad_slot = "2780937993";
-google_ad_width = 728;
-google_ad_height = 90;*/
-//-->
-</script>
-&lt;%&ndash;<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>&ndash;%&gt;</div>&ndash;%&gt;
-<div class="jquery-script-clear"></div>
-</div>
-</div>--%>
-<div class="col-md-3" style="margin-top:150px;">
-<h3 class="text-success">Easy Tree Example</h3>
+<body class="landing">
+<!-- Header -->
+<header id="header" class="alt">
+    <nav id="nav" style="margin-top: -20px">
+        <ul>
+            <li style="display:inline"><a href="index">Home</a></li>
+            <li style="display:inline"><a href="professors">Professors</a></li>
+            <li style="display:inline"><a href="status">Student Service</a></li>
+            <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
+            <li style="display:inline;margin-right:42%">
+                <form style="margin-right:4%;margin-left:3%;margin-top: -3.2cm" action="login" th:action="@{/logout}"
+                      method="post">
+                    <input type="submit" value="Logout"/>
+                    <input type="hidden"
+                           name="${_csrf.parameterName}"
+                           value="${_csrf.token}"/>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- Banner -->
+<section id="banner" style="height: 300px; margin-top: -70px">
+    <div class="inner">
+        <header style="float: left; margin-top: -205px">
+            <h4 style="color:white">Categories</h4>
+            <h5 style="color:white">Handling categories and subcategories</h5>
+        </header>
+    </div>
+</section>
+
+<div class="col-md-3" style="margin-top:50px; width: 1200px; margin-left: 19%;">
 <div id="criteriaTree" class="easy-tree">
-    <ul>
-        <li v-bind:id='buildId(criterij_lvl1.id,criterij_lvl1.criteriaLevel)' v-for="criterij_lvl1 in criteria1">{{criterij_lvl1.name}}
+    <ul style="margin-left: 130px; margin-top: 40px">
+        <li style="vertical-align: top; width: 340px; display: inline-block;" v-bind:id='buildId(criterij_lvl1.id,criterij_lvl1.criteriaLevel)' v-for="criterij_lvl1 in criteria1"> {{criterij_lvl1.name}}
+            <ul style="margin-left: 11px;" v-if="criteria_level(2,criterij_lvl1) != '' ">
+                <li v-bind:id='buildId(criterij_lvl2.id,criterij_lvl2.criteriaLevel)' v-for="criterij_lvl2 in criteria_level(2,criterij_lvl1)"> {{criterij_lvl2.name}}
 
-            <ul  v-if="criteria_level(2,criterij_lvl1) != '' ">
-                <li  v-bind:id='buildId(criterij_lvl2.id,criterij_lvl2.criteriaLevel)' v-for="criterij_lvl2 in criteria_level(2,criterij_lvl1)">{{criterij_lvl2.name}}
+                    <ul style="margin-left: 12px" v-if="criteria_level(3,criterij_lvl2) != '' ">
+                        <li v-bind:id='buildId(criterij_lvl3.id,criterij_lvl3.criteriaLevel)' v-for="criterij_lvl3 in criteria_level(3,criterij_lvl2)"> {{criterij_lvl3.name}}
 
-                    <ul v-if="criteria_level(3,criterij_lvl2) != '' ">
-                        <li v-bind:id='buildId(criterij_lvl3.id,criterij_lvl3.criteriaLevel)' v-for="criterij_lvl3 in criteria_level(3,criterij_lvl2)">{{criterij_lvl3.name}}
+                            <ul style="margin-left: 11px" v-if="criteria_level(4,criterij_lvl3) != '' ">
+                                <li v-bind:id='buildId(criterij_lvl4.id,criterij_lvl4.criteriaLevel)' v-for="criterij_lvl4 in criteria_level(4,criterij_lvl3)"> {{criterij_lvl4.name}}
 
-                            <ul v-if="criteria_level(4,criterij_lvl3) != '' ">
-                                <li v-bind:id='buildId(criterij_lvl4.id,criterij_lvl4.criteriaLevel)' v-for="criterij_lvl4 in criteria_level(4,criterij_lvl3)">{{criterij_lvl4.name}}
+                                    <ul style="margin-left: 11px" v-if="criteria_level(5,criterij_lvl4) != '' ">
+                                        <li v-bind:id='buildId(criterij_lvl5.id,criterij_lvl5.criteriaLevel)' v-for="criterij_lvl5 in criteria_level(5,criterij_lvl4)"> {{criterij_lvl5.name}}
 
-                                    <ul v-if="criteria_level(5,criterij_lvl4) != '' ">
-                                        <li v-bind:id='buildId(criterij_lvl5.id,criterij_lvl5.criteriaLevel)' v-for="criterij_lvl5 in criteria_level(5,criterij_lvl4)">{{criterij_lvl5.name}}
+                                            <ul style="margin-left: 12px" v-if="criteria_level(6,criterij_lvl5) != '' ">
+                                                <li v-bind:id='buildId(criterij_lvl6.id,criterij_lvl6.criteriaLevel)' v-for="criterij_lvl6 in criteria_level(6,criterij_lvl5)"> {{criterij_lvl6.name}}
 
-                                            <ul v-if="criteria_level(6,criterij_lvl5) != '' ">
-                                                <li v-bind:id='buildId(criterij_lvl6.id,criterij_lvl6.criteriaLevel)' v-for="criterij_lvl6 in criteria_level(6,criterij_lvl5)">{{criterij_lvl6.name}}
+                                                    <ul style="margin-left: 12px" v-if="criteria_level(7,criterij_lvl6) != '' ">
+                                                        <li v-bind:id='buildId(criterij_lvl7.id,criterij_lvl7.criteriaLevel)' v-for="criterij_lvl7 in criteria_level(7,criterij_lvl6)"> {{criterij_lvl7.name}}
 
-                                                    <ul v-if="criteria_level(7,criterij_lvl6) != '' ">
-                                                        <li v-bind:id='buildId(criterij_lvl7.id,criterij_lvl7.criteriaLevel)' v-for="criterij_lvl7 in criteria_level(7,criterij_lvl6)">{{criterij_lvl7.name}}
-
-                                                            <ul v-if="criteria_level(8,criterij_lvl7) != '' ">
-                                                                <li v-bind:id='buildId(criterij_lvl8.id,criterij_lvl8.criteriaLevel)' v-for="criterij_lvl8 in criteria_level(8,criterij_lvl7)">{{criterij_lvl8.name}}
-
+                                                            <ul style="margin-left: 12px" v-if="criteria_level(8,criterij_lvl7) != '' ">
+                                                                <li v-bind:id='buildId(criterij_lvl8.id,criterij_lvl8.criteriaLevel)' v-for="criterij_lvl8 in criteria_level(8,criterij_lvl7)"> {{criterij_lvl8.name}}
 
                                                                 </li>
                                                             </ul>

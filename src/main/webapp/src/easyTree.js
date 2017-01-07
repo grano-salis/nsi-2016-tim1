@@ -30,10 +30,10 @@
             }
         };
 
-        var warningAlert = $('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong></strong><span class="alert-content"></span> </div> ');
+        var warningAlert = $('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="height: 40px">&times;</button><strong></strong><span class="alert-content"></span> </div> ');
         var dangerAlert = $('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong></strong><span class="alert-content"></span> </div> ');
 
-        var createInput = $('<div class="input-group"><input placeholder="Name.." type="text" class="form-control name"><span class="input-group-btn"><button type="button" class="btn btn-default btn-success confirm"></button> </span><span class="input-group-btn"><button type="button" class="btn btn-default cancel"></button> </span></div><div><input placeholder="Points.." type="number" class="form-control points"><textarea class="form-control" placeholder="Description.."></textarea> </div> ');
+        var createInput = $('<div style="margin-left: 30%"> <input placeholder="Name.." type="text" class="form-control name" style="background-color: rgba(75, 75, 93, 0.85);color:whitesmoke;border-radius: 10px;margin-left: 2%;width: 50%;"><input placeholder="Points.." type="number" class="form-control points" style="font-weight: 800;background-color: rgba(75, 75, 93, 0.85); color:whitesmoke;width: 50%;margin-left: 2%"> <textarea class="form-control" placeholder="Description.." style="font-weight: 800;background-color: rgba(75, 75, 93, 0.85);color:whitesmoke;width: 50%;margin-left: 2%" rows="4"></textarea></div><br><div class="input-group"> <span class="input-group-btn"><button style="margin-left: 300px" type="button" class="btn btn-default btn-success confirm"></button></span><span class="input-group-btn"><button style="margin-left: -135px" type="button" class="btn btn-default cancel"></button></span></div>');
 
         options = $.extend(defaults, options);
 
@@ -46,14 +46,14 @@
                     $(children).remove();
                     text = $(this).text();
                     $(this).html('<span><span class="glyphicon"></span><a href="javascript: void(0);"></a> </span>');
-                    $(this).find(' > span > span').addClass('glyphicon-folder-open');
+                    $(this).find(' > span > span').addClass('glyphicon-file');
                     $(this).find(' > span > a').text(text);
                     $(this).append(children);
                 }
                 else {
                     text = $(this).text();
                     $(this).html('<span><span class="glyphicon"></span><a href="javascript: void(0);"></a> </span>');
-                    $(this).find(' > span > span').addClass('glyphicon-file');
+                    $(this).find(' > span > span').addClass('glyphicon glyphicon-list-alt');
                     $(this).find(' > span > a').text(text);
                 }
             });
@@ -67,7 +67,7 @@
 
             // addable
             if (options.addable) {
-                $(easyTree).find('.easy-tree-toolbar').append('<div class="create"><button class="btn btn-default btn-sm btn-success"><span class="glyphicon glyphicon-plus"></span></button></div> ');
+                $(easyTree).find('.easy-tree-toolbar').append('<div class="create" style="margin-right: 100px; margin-left: 100px" "><button class="btn btn-default btn-sm btn-success disabled"><span class="glyphicon glyphicon-plus"></span> Add category</button></div>');
                 $(easyTree).find('.easy-tree-toolbar .create > button').attr('title', options.i18n.addTip).click(function () {
                     var createBlock = $(easyTree).find('.easy-tree-toolbar .create');
                     $(createBlock).append(createInput);
@@ -124,7 +124,6 @@
                                         else
                                             $(easyTree).find('.easy-tree-toolbar .remove > button').removeClass('disabled');
                                     }
-
                                 }
 
                                 e.stopPropagation();
@@ -177,7 +176,7 @@
 
             // deletable
             if (options.deletable) {
-                $(easyTree).find('.easy-tree-toolbar').append('<div class="remove"><button class="btn btn-default btn-sm btn-danger disabled"><span class="glyphicon glyphicon-remove"></span></button></div> ');
+                $(easyTree).find('.easy-tree-toolbar').append('<div class="remove" style="margin-right: 100px; margin-left: 100px"><button id="delete-button" class="btn btn-default btn-sm btn-error disabled"><span class="glyphicon glyphicon-trash"></span> Remove category</button></div> ');
                 $(easyTree).find('.easy-tree-toolbar .remove > button').attr('title', options.i18n.deleteTip).click(function () {
                     var selected = getSelectedItems();
                     if (selected.length <= 0) {
@@ -190,13 +189,13 @@
                     else {
                         $(easyTree).prepend(dangerAlert);
                         $(easyTree).find('.alert .alert-content').html(options.i18n.deleteConfirmation)
-                            .append('<a style="margin-left: 10px;" class="btn btn-default btn-danger confirm"></a>')
+                            .append('<a style="margin-left: 10px; margin-right: 10px" class="btn btn-default btn-danger confirm"></a>')
                             .find('.confirm').html(options.i18n.confirmButtonLabel);
                         $(easyTree).find('.alert .alert-content .confirm').on('click', function () {
                             removeCriteria();
                             $(selected).find(' ul ').remove();
                             if($(selected).parent('ul').find(' > li').length <= 1) {
-                                $(selected).parents('li').removeClass('parent_li').find(' > span > span').removeClass('glyphicon-folder-open').addClass('glyphicon-file');
+                                $(selected).parents('li').removeClass('parent_li').find(' > span > span').removeClass('glyphicon-file').addClass('glyphicon-file');
                                 $(selected).parent('ul').remove();
                             }
                             $(selected).remove();
@@ -214,12 +213,12 @@
                     $(this).attr('title', options.i18n.expandTip)
                         .find(' > span.glyphicon')
                         .addClass('glyphicon-folder-close')
-                        .removeClass('glyphicon-folder-open');
+                        .removeClass('glyphicon-file');
                 } else {
                     children.show('fast');
                     $(this).attr('title', options.i18n.collapseTip)
                         .find(' > span.glyphicon')
-                        .addClass('glyphicon-folder-open')
+                        .addClass('glyphicon-file')
                         .removeClass('glyphicon-folder-close');
                 }
                 e.stopPropagation();
@@ -254,6 +253,12 @@
                                 $(easyTree).find('.easy-tree-toolbar .remove > button').addClass('disabled');
                             else
                                 $(easyTree).find('.easy-tree-toolbar .remove > button').removeClass('disabled');
+                        }
+                        if (options.addable) {
+                            if (selected.length <= 0 || selected.length > 1)
+                                $(easyTree).find('.easy-tree-toolbar .create > button').addClass('disabled');
+                            else
+                                $(easyTree).find('.easy-tree-toolbar .create > button').removeClass('disabled');
                         }
 
                     }

@@ -95,7 +95,7 @@
     <header id="header" class="alt">
         <h1 style="margin-right:4%;margin-left:4%;"><strong><a>Professor Evaluator</a></strong> by Alpha NSI</h1>
     </header>
-    <section id="banner" style="padding-top: 7.8em;padding-bottom: 5.4em">
+    <section id="banner" style="padding-top: 7.8em;padding-bottom: 5.6em">
         <div class="inner">
             <header>
                 <h1>Welcome to Professor Evaluator</h1>
@@ -111,7 +111,7 @@
                     </fieldset>
                 </form>
             </div><br/>
-            <h3>Use your credentials to access our Professors, Students Service or <A></A>dmin dedicated area.</h3>
+            <h3>Use your credentials to access our Professors, Students Service or Admin dedicated area.</h3>
             <h6 style="color: white">Otherwise leave or your IP might be blocked in case we find your appearance here unwanted.</h6>
         </div>
     </section>

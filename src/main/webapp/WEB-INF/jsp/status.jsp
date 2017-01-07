@@ -7,20 +7,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            background: #eee;
+        }
+    </style>
 </head>
 <body class="landing">
 
 <!-- Header -->
 <header id="header" class="alt">
-    <h1 style="margin-right:5%;margin-left:5%"><strong><a href="index.html">Professor Evaluator</a></strong> by Alpha NSI</h1>
-    <nav id="nav">
+    <nav id="nav" style="margin-top: -20px">
         <ul>
             <li style="display:inline"><a href="index">Home</a></li>
             <li style="display:inline"><a href="professors">Professors</a></li>
             <li style="display:inline"><a href="status">Student Service</a></li>
             <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
             <li style="display:inline;margin-right:42%">
-                <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="login" th:action="@{/logout}"
+                <form style="margin-right:4%;margin-left:3%;margin-top: -3.2cm" action="login" th:action="@{/logout}"
                       method="post">
                     <input type="submit" value="Logout"/>
                     <input type="hidden"
@@ -32,23 +36,21 @@
     </nav>
 </header>
 <!-- Banner -->
-<section id="banner">
+<section id="banner" style="height: 300px; margin-top: -70px">
     <div class="inner">
-        <header>
-            <h1>Student Service</h1>
-            <h3>Filtering professors via categories and subcategories</h3>
+        <header style="float: left; margin-top: -205px">
+            <h4 style="color:white">Student Service</h4>
+            <h5 style="color:white">Handling CV items</h5>
         </header>
     </div>
 </section>
-
-
 <!-- Three -->
-<section id="three" class="wrapper align-center">
+<section id="three" class="wrapper align-center" style="margin-top: -50px">
     <div class="inner">
-        <ul class="tabstatus">
-            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Pending')" id="defaultOpen">Pending</a></li>
-            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Approved')">Approved</a></li>
-            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Rejected')">Rejected</a></li>
+        <ul class="tabstatus" style="background: rgba(75, 75, 93, 0.85);opacity: 0.9">
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Pending')" id="defaultOpen" style="color: white">Pending</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Approved')" style="color: white">Approved</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Rejected')" style="color: white">Rejected</a></li>
         </ul>
 
         <div id="Pending" class="tabcontent">
@@ -100,7 +102,7 @@
                     <th v-text="convertDate(cvItem.item.insertDate)"></th>
                     <th v-text="convertDate(cvItem.item.lastUpdateDate)"></th>
                     <th>
-                        <button @click="downloadAttachment(cvItem.item.attachmentLink)" class="attachemtn">Download</button>
+                        <button @click="downloadAttachment(cvItem.item.attachmentLink)" class="attachemtn" style="border-color:rgba(75, 75, 93, 0.85); ">Download</button>
                     </th>
                     <th class="centered">
                         <button @click="changeStatus(cvItem.item, 1)" class="pendItem">Pend</button>

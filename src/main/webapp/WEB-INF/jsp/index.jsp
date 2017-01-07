@@ -31,7 +31,7 @@
   </nav>
 </header>
 <!-- Banner -->
-<section id="banner" style="padding-top: 8.6em;padding-bottom: 7.4em">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 7.5em">
   <div class="inner">
     <header>
       <h1>Welcome to Professor Evaluator</h1>

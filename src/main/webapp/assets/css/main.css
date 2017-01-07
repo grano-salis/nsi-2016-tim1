@@ -3307,13 +3307,13 @@ button:disabled,
 
 /* Change background color of links on hover */
 .tabstatus li:hover {
-	background-color: #88e1b0;
+	background-color: rgba(75, 75, 93, 0.85);
 }
 
 
 /* Create an active/current tablink class */
 .tabstatus li:focus, .active {
-	background-color: #6cc091;
+	background-color: rgba(75, 75, 93, 0.85);
 }
 
 /* Style the tab content */
@@ -3384,7 +3384,7 @@ th.centered {
 	padding: 0;
 	overflow: hidden;
 	border: 1px solid #ccc;
-	background-color: #a0f5c5;
+	background-color: rgba(75, 75, 93, 0.85);
 }
 
 /* Float the list items side by side */
@@ -3407,13 +3407,13 @@ th.centered {
 
 /* Change background color of links on hover */
 .tabstatus li:hover {
-	background-color: #88e1b0;
+	background-color: rgba(75, 75, 93, 0.85);
 }
 
 
 /* Create an active/current tablink class */
 .tabstatus li:focus, .active {
-	background-color: #6cc091;
+	background-color: rgba(75, 75, 93, 0.85);
 }
 
 /* Style the tab content */

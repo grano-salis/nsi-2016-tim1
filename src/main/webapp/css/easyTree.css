@@ -2,7 +2,8 @@
 .easy-tree {
     min-height: 20px;
     margin-bottom: 20px;
-    background-color: #555;
+    background-color: rgba(75, 75, 93, 0.85);
+    opacity: 0.8;
     color: #fff;
     border: none;
     border-top: none;
@@ -93,7 +94,7 @@
 }
 
 .easy-tree .easy-tree-toolbar {
-    background-color: #fff;
+    background-color: rgba(75, 75, 93, 0.85);
 }
 
 .easy-tree .easy-tree-toolbar > div {
@@ -101,8 +102,52 @@
 }
 
 .easy-tree .easy-tree-toolbar > div > button {
-    border-radius: 0;
-    margin: 20px 5px;
+    width: 220px;
+    margin: 20px 70px;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 3px #6cc091;
+    color: #6cc091 !important;
+    border-radius: 30px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.76em;
+    height: 3.5em;
+    line-height: 3em;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 800;
+}
+
+#delete-button{
+    width: 220px;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 3px indianred;
+    color: indianred !important;
+    border-radius: 30px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.76em;
+    height: 3.5em;
+    line-height: 3em;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 800;
 }
 
 .easy-tree .easy-tree-toolbar .create .input-group {
@@ -113,8 +158,27 @@
 
 .easy-tree .easy-tree-toolbar .create .input-group input {
     border-radius: 0;
+    color: rgba(75, 75, 93, 0.85);
+    font-weight: 800;
 }
 
 .easy-tree .easy-tree-toolbar .create .input-group button {
-    border-radius: 0;
+    border-radius: 30px;
+    width: 100px;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 3px #6cc091;
+    color: #6cc091 !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    height: 3em;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
