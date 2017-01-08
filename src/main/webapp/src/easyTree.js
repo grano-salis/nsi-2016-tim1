@@ -15,18 +15,18 @@
                 deleteNull: 'Select a node to delete',
                 deleteMultiple: 'Only one node can be deleted at one time',
                 deleteConfirmation: 'Delete this node?',
-                confirmButtonLabel: 'Okay',
+                confirmButtonLabel: 'Confirm',
                 editNull: 'Select a node to edit',
                 editMultiple: 'Only one node can be edited at one time',
                 addMultiple: 'Select a node to add a new node',
-                collapseTip: 'collapse',
-                expandTip: 'expand',
-                selectTip: 'select',
-                unselectTip: 'unselect',
-                editTip: 'edit',
-                addTip: 'add',
-                deleteTip: 'delete',
-                cancelButtonLabel: 'cancel'
+                collapseTip: 'Collapse',
+                expandTip: 'Expand',
+                selectTip: 'Select',
+                unselectTip: 'Unselect',
+                editTip: 'Edit',
+                addTip: 'Add',
+                deleteTip: 'Delete',
+                cancelButtonLabel: 'Cancel'
             }
         };
 

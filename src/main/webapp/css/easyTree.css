@@ -65,13 +65,13 @@
 }
 
 .easy-tree li.parent_li > span:hover, .easy-tree li.parent_li > span:hover + ul li span {
-    background: #ff6c60;
+    background-color: rgba(75, 75, 93, 0.85);
     color: #fff;
 }
 
 .easy-tree li.parent_li > span:hover + ul li.li_selected span {
     background: #e5e2e1;
-    color: #e56155;
+    background-color: rgba(75, 75, 93, 0.85);
 }
 
 .easy-tree li > span > a {
@@ -85,12 +85,12 @@
 
 .easy-tree li.li_selected > span, .easy-tree li.li_selected > span > a {
     background: #e5e2e1;
-    color: #e56155;
+    background-color: rgba(75, 75, 93, 0.85);
 }
 
 .easy-tree li.li_selected > span:hover, .easy-tree li.li_selected > span:hover > a {
     background: #fafafa;
-    color: #ff6c60;
+    background-color: rgba(75, 75, 93, 0.85);
 }
 
 .easy-tree .easy-tree-toolbar {
