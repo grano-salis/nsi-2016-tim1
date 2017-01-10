@@ -2,7 +2,6 @@ package org.nsi.alpha.services.impl;
 
 import org.nsi.alpha.models.User;
 import org.nsi.alpha.repositories.UserRepository;
-import org.nsi.alpha.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl implements UserDetailsService{
+public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;

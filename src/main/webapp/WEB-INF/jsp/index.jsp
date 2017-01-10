@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
   <title>NSI - Alpha</title>
   <meta charset="utf-8" />
@@ -18,7 +18,7 @@
         <li style="display:inline"><a href="status">Student Service</a></li>
         <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
         <li style="display:inline;margin-right:42%">
-            <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="login" th:action="@{/logout}"
+            <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="/logout"
                   method="post">
                 <input type="submit" value="Logout"/>
                 <input type="hidden"
