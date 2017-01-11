@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>NSI - Alpha</title>
+  <title>NSI Alpha</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
@@ -15,8 +15,10 @@
   <nav id="nav">
     <ul>
         <li style="display:inline"><a href="index">Home</a></li>
-        <li style="display:inline"><a href="status">Student Service</a></li>
-        <li style="display:inline;margin-right:42%"><a href="criteria">Criteria</a></li>
+        <li style="display:inline"><a href="new_cv_item">New CV item</a></li>
+        <li style="display:inline"><a href="status">Pending CV items</a></li>
+        <li style="display:inline"><a href="criteria">Categories</a></li>
+        <li style="display:inline;margin-right:37%"><a href="logs">Logs</a></li>
         <li style="display:inline;margin-right:42%">
             <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="/logout"
                   method="post">
@@ -30,7 +32,7 @@
   </nav>
 </header>
 <!-- Banner -->
-<section id="banner" style="padding-top: 8.6em;padding-bottom: 7.5em">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 8.6em">
   <div class="inner">
     <header>
       <h1>Welcome to Professor Evaluator</h1>
@@ -38,34 +40,42 @@
 
     <div class="flex">
 
-      <div class="hover-link" style="width:460px;padding-left: 10%">
-        <a href="professors" style="text-decoration: none;">
-        <span class="icon fa-user"></span>
-        <h3>Professors</h3>
-        <p>List of professors and their CV lines</p>
-        </a>
-      </div>
+        <div class="hover-link" style="width:250px;padding: 0px 20px 20px 20px;">
+            <a href="new_cv_item" style="text-decoration: none;">
+                <span class="icon fa-list-alt"></span>
+                <h3>New CV item</h3>
+                <p style="width: inherit">Submit new CV item</p>
+            </a>
+        </div>
 
-      <div class="hover-link" style="width:460px">
-        <a href="criteria" style="text-decoration: none;">
-        <span class="icon fa-list"></span>
-        <h3>Criteria</h3>
-        <p>Filtering professors via categories and subcategories</p>
-        </a>
-      </div>
+        <div class="hover-link" style="width:auto;padding: 0px 20px 20px 20px;">
+            <a href="status" style="text-decoration: none;margin-left: 0">
+            <span class="icon fa-book"></span>
+            <h3>Pending CV items</h3>
+            <p style="width: inherit">Handle submitted CV items</p>
+            </a>
+        </div>
 
-      <div class="hover-link" style="width:460px;padding-right: 10%">
-        <a href="status_handling" style="text-decoration: none;">
-        <span class="icon fa-book"></span>
-        <h3>CV Status Management</h3>
-        <p>CV changes validation</p>
-        </a>
-      </div>
+        <div class="hover-link" style="width:250px;padding: 0px 20px 20px 20px;">
+            <a href="criteria" style="text-decoration: none;margin-left: 0">
+                <span class="icon fa-list"></span>
+                <h3>Categories</h3>
+                <p style="width: inherit">Handling categories and subcategories</p>
+            </a>
+        </div>
+
+        <div class="hover-link" style="width:250px;padding: 0px 20px 20px 20px;">
+            <a href="logs" style="text-decoration: none">
+                <span class="icon fa-user"></span>
+                <h3>Logs</h3>
+                <p>System activity logs</p>
+            </a>
+        </div>
 
     </div>
 
     <footer>
-      <a href="professors" class="button">Preview our professors</a>
+      <a href="help" class="button">Using this first time?</a>
     </footer>
   </div>
 </section>

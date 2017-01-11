@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexController {
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
-    @RequestMapping("/index")
+    @RequestMapping(value ={"/index", "", "/"})
     public String hello(Model model) {
         return "index";
     }
@@ -37,4 +37,11 @@ public class IndexController {
         LOGGER.info(String.format("User %s successfully logged out of system.", auth.getCredentials()));
         return "redirect:/login?logout";
     }
+
+    @RequestMapping("logs")
+    public String logs(Model model) {return "logs";}
+
+    @RequestMapping("help")
+    public String help(Model model) {return "help";}
+
 }

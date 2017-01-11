@@ -91,24 +91,23 @@
         <%--}--%>
     </style>
     <link rel="stylesheet" href="assets/css/main.css"/>
-    <title tiles:fragment="title">Login</title>
+    <title tiles:fragment="title">NSI Alpha - Login</title>
 </head>
 <body>
-<header id="header" class="alt">
-    <h1 style="margin-right:4%;margin-left:4%;"><strong><a>Professor Evaluator</a></strong> by Alpha NSI</h1>
-</header>
-<section id="banner" style="padding-top: 7.8em;padding-bottom: 5.6em">
+<section id="banner" style="padding-top: 8.6em;padding-bottom: 3em">
     <div class="inner">
         <header>
             <h1>Welcome to Professor Evaluator</h1>
         </header>
-        <div tiles:fragment="content" style="width:330px;margin-left: 30em">
+        <div class="alert-danger" style="text-align: center;">
             <c:if test="${param.error ne null}">
-                <div class="alert-danger">Invalid username and password.</div>
+                Invalid username and password.
             </c:if>
             <c:if test="${param.logout ne null}">
-                <div class="alert-normal">You have been logged out.</div>
-            </c:if>
+                You have been logged out.
+            </c:if> Insert your credentials.
+        </div>
+        <div tiles:fragment="content" style="width:330px;margin-left: 29em">
             <form name='form-login' th:action="@{/login}" method="post">
                 <fieldset>
                     <span class="fontawesome-user"></span>

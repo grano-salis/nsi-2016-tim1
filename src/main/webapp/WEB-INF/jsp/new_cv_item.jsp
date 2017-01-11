@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" content="text/html; charset=UTF-8">
 <head>
-  <title>Create CV Item</title>
+  <title>NSI Alpha - New CV Item</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/bootstrap.css" />
@@ -23,10 +23,12 @@
     <nav id="nav" style="margin-top: -20px">
         <ul>
             <li style="display:inline"><a href="index">Home</a></li>
-            <li style="display:inline"><a href="status">Student Service</a></li>
-            <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
+            <li style="display:inline"><a href="new_cv_item">New CV item</a></li>
+            <li style="display:inline"><a href="status">Pending CV items</a></li>
+            <li style="display:inline"><a href="criteria">Categories</a></li>
+            <li style="display:inline;margin-right:37%"><a href="logs">Logs</a></li>
             <li style="display:inline;margin-right:42%">
-                <form style="margin-right:4%;margin-left:3%;margin-top: -3.2cm" action="/logout"
+                <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="/logout"
                       method="post">
                     <input type="submit" value="Logout"/>
                     <input type="hidden"
