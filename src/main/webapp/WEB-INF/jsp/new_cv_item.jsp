@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/easyTree.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="css/easyTree.css">
     <style>
         body {
             background: #eee;
@@ -49,9 +49,9 @@
 
 <div class="row" style="margin-top: 50px; padding-left:180px; padding-right:180px">
     <div class="col-md-12">
-        <div class="col-md-6">
-                <h4>Select item category:</h4>
-                <div id="criteriaTree" class="easy-tree" style="width:400px">
+        <div style="float: right;margin-right: 0;" class="col-md-5">
+                <div id="criteriaTree" class="easy-tree" style="width:100%;opacity: 1">
+                    <h5 style="font-weight: 800; color:whitesmoke;margin-left: 20px">Select item category:</h5>
                     <ul>
                         <li v-bind:id='buildId(criterij_lvl1.id,criterij_lvl1.criteriaLevel)' v-for="criterij_lvl1 in criteria1">{{criterij_lvl1.name}}
 
@@ -94,34 +94,31 @@
                     </ul>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="inner">
-                <div class="form-group">
-                    <label>Name: </label>
-                    <input style="border: 1px solid rgba(0, 0, 0, 0.15);
-                        background: white; color: #55595c"
-                           id="name" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label>Description: </label>
-                    <textarea class="form-control" id="description" rows="7" ></textarea>
-                </div>
+        <div class="col-md-5" style="float: left;background-color: rgba(75, 75, 93, 0.85);">
+            <div class="inner" >
                 <div class="form-group">
                     <form id="cvItemFileUploadForm" method="POST" enctype="multipart/form-data" style="display: block"
                           action="/upload_cv_item_attachment">
 
-                        <label style="display: block">Attach file:</label>
-                        <input type="file" id="fileLoader" name="file" style="display: inline-block" readonly>
-                        <div onclick="uploadCvItemAttachment()" id="uploadFile" class="btn btn-danger btn-file">Upload</div>
-                        <div id="fileUploadPercents" style="padding-left: 5px; display: inline-block">0%</div>
+                        <div class="form-group">
+                            <h5 style="color: white;font-weight: 800">Name: </h5>
+                            <input style="border: 1px solid rgba(75, 75, 93, 0.85);background-color: rgba(75, 75, 93, 0.85);"
+                                   id="name" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <h5 style="color: white;font-weight: 800">Description: </h5>
+                            <textarea class="form-control" id="description" rows="5" style="background-color: rgba(75, 75, 93, 0.85);border: 1px solid rgba(75, 75, 93, 0.85);color: whitesmoke"></textarea>
+                        </div>
+
+                        <h5 style="display: block;color: white;font-weight: 800">Attach file:</h5>
+                        <input type="file" id="file-picker-button" name="file" style="display: inline-block" readonly>
+                        <div style="margin-top: -15px" onclick="uploadCvItemAttachment()" id="file-upload-button" class="btn btn-danger btn-file">Upload</div><br>
+                        <br><br>
+                        <input style="width: 265px;" id="delete-button" type="button" onclick="deleteUpload()" value="Clear Attachment"/>
+                        <input style="float: right;" type="submit" onclick="saveCvItem()" value="Save CV item"/>
                     </form>
-                    <div id="clearAttachment" class="btn btn-info btn-file" onclick="deleteUpload()">Clear Attachment</div>
-                    <br>
-                    <div id="uploadStatus"></div>
+                    <div style="margin-top: 5px" id="uploadStatus"></div>
                 </div>
-                <div class="btn btn-success btn-file pull-right" onclick="saveCvItem()">
-                    Save CV Item
-                </div><br><br><br>
                 <div id="saveStatus"></div>
             </div>
         </div>
