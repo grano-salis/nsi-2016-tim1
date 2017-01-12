@@ -68,7 +68,7 @@ public class StatusController {
             Cv userCv = cvService.findByUsername(username);
             List<CvItem> filteredByUser = cvItemArrayList
                     .stream()
-                    .filter(cvItem -> Objects.equals(cvItem.getId(), userCv.getId()))
+                    .filter(cvItem -> Objects.equals(cvItem.getCvId(), userCv.getId()))
                     .collect(Collectors.toList());
             Collections.sort(cvItemArrayList, (cvItem1, cvItem2) -> cvItem2.getInsertDate().compareTo(cvItem1.getInsertDate()));
             String name = userCv.getName() + " " + userCv.getSurname();
