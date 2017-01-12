@@ -46,5 +46,19 @@
 </section>
 
 
+<section>
+    <br>
+    <div class="col-md-12" style="margin-left: 50px; float: left">
+        <h2>1. Submit new CV item - PROFESSORS</h2>
+        <img src="/images/Screenshot1.png" alt="New items" height="452" width="842">
+        <p style="text-align: center">1. Insert CV item name<br>2. Insert CV item description<br>3. Attach CV item file<br>4. Upload file on FTP server<br>5. Save/Discard CV item</p>
+    </div>
+    <div class="col-md-12" style="margin-right: 50px; float: right">
+        <h2>2. Handle pending CV item - STUDENT SERVICE</h2>
+        <img src="/images/Screenshot2.png" alt="Pending items" height="452" width="842">
+        <p style="text-align: center">1. Download attachment for CV item<br>2. Approve pending CV item<br>3. Reject pending CV item<br>4. Download approved CV item<br>5. Set approved CV item to pending stage<br>6. Reject approved CV item<br>7. Download rejected CV item<br>8. Set rejected CV item to pending stage<br>9. Approve rejected CV item.</p>
+    </div>
+</section>
+
 </body>
 </html>
