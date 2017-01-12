@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CvRepository extends JpaRepository<Cv, Long>,
         CrudRepository<Cv, Long> {
 
+        Cv findByUsername(String username);
 }

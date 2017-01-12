@@ -38,7 +38,7 @@ public class CvItem implements Serializable {
     Integer criteriaId;
 
     @Column(name = "CV_ID")
-    Integer cvId;
+    Long cvId;
 
     @Column(name = "STATUS_ID")
     Integer statusId;
@@ -113,11 +113,11 @@ public class CvItem implements Serializable {
         this.criteriaId = criteriaId;
     }
 
-    public Integer getCvId() {
+    public Long getCvId() {
         return cvId;
     }
 
-    public void setCvId(Integer cvId) {
+    public void setCvId(Long cvId) {
         this.cvId = cvId;
     }
 

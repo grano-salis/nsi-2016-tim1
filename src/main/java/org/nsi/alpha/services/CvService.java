@@ -12,4 +12,6 @@ public interface CvService {
     Cv save(Cv cv);
 
     void remove(Long id);
+
+    Cv findByUsername(String username);
 }

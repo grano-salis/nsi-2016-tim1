@@ -32,6 +32,8 @@ public class Cv implements Serializable {
     Integer telephone;
     @Column(name = "FAX")
     Integer fax;
+    @Column(name = "USERNAME")
+    String username;
 
     public Cv() {
     }
@@ -108,6 +110,14 @@ public class Cv implements Serializable {
         this.fax = fax;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "Cv{" +
@@ -118,8 +128,9 @@ public class Cv implements Serializable {
                 ", email='" + email + '\'' +
                 ", photo='" + photo + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", telephone='" + telephone + '\'' +
-                ", fax='" + fax + '\'' +
+                ", telephone=" + telephone +
+                ", fax=" + fax +
+                ", username='" + username + '\'' +
                 '}';
     }
 }

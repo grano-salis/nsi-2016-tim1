@@ -4,12 +4,14 @@ import org.apache.commons.net.ftp.*;
 import org.nsi.alpha.models.CvItem;
 import org.nsi.alpha.models.viewModels.CvItemViewModel;
 import org.nsi.alpha.services.CvItemService;
+import org.nsi.alpha.services.CvService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +31,9 @@ public class CvItemController {
 
     @Autowired
     CvItemService cvItemService;
+
+    @Autowired
+    CvService cvService;
 
     String CURRENTLY_UPLOADED_FILENAME = "";
 
@@ -73,7 +78,10 @@ public class CvItemController {
         //TODO:
         // Za ovaj cvId ce se postaviti vrijednost ID-a
         // ulogovanog profesora (vjerovatno neka veza profa-cv)
-        cvItem.setCvId(1);
+
+        Long cvId = cvService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId();
+
+        cvItem.setCvId(cvId);
         cvItem.setCriteriaId(criteriaId);
 
         CvItem savedCvItem = new CvItem();
@@ -189,7 +197,7 @@ public class CvItemController {
             throw new FTPConnectionClosedException("Failed to connect to server: " + serverAddress);
         } else {
             LOGGER.info(String.format("Action called - connected to server: %s.", serverAddress));
-            ftpClient.login("emirmire", "nsimire");
+            ftpClient.login("emirmire", "   ");
             ftpClient.enterLocalPassiveMode();
             ftpClient.changeWorkingDirectory(null);
 

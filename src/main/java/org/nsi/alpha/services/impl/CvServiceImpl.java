@@ -33,4 +33,9 @@ public class CvServiceImpl implements CvService {
     public void remove(Long id) {
         cvRepository.delete(id);
     }
+
+    @Override
+    public Cv findByUsername(String username) {
+        return cvRepository.findByUsername(username);
+    }
 }

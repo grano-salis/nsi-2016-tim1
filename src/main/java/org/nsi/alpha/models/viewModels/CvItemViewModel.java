@@ -14,7 +14,7 @@ public class CvItemViewModel {
     Date insertDate;
     Date lastUpdateDate;
     Integer criteriaId;
-    Integer cvId;
+    Long cvId;
     Integer statusId;
 
     public CvItemViewModel(CvItem cvItem) {
@@ -110,11 +110,11 @@ public class CvItemViewModel {
         this.criteriaId = criteriaId;
     }
 
-    public Integer getCvId() {
+    public Long getCvId() {
         return cvId;
     }
 
-    public void setCvId(Integer cvId) {
+    public void setCvId(Long cvId) {
         this.cvId = cvId;
     }
 
