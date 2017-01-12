@@ -1,9 +1,8 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>NSI - Alpha</title>
+    <title>NSI Alpha - Pending CV items</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -20,10 +19,12 @@
     <nav id="nav" style="margin-top: -20px">
         <ul>
             <li style="display:inline"><a href="index">Home</a></li>
-            <li style="display:inline"><a href="status">Student Service</a></li>
-            <li style="display:inline;margin-right:43%"><a href="criteria">Categories</a></li>
+            <li style="display:inline"><a href="new_cv_item">New CV item</a></li>
+            <li style="display:inline"><a href="status">Pending CV items</a></li>
+            <li style="display:inline"><a href="criteria">Categories</a></li>
+            <li style="display:inline;margin-right:37%"><a href="logs">Logs</a></li>
             <li style="display:inline;margin-right:42%">
-                <form style="margin-right:4%;margin-left:3%;margin-top: -3.2cm" action="/logout"
+                <form style="margin-right:5%;margin-left:3%;margin-top: -3cm" action="/logout"
                       method="post">
                     <input type="submit" value="Logout"/>
                     <input type="hidden"
@@ -101,7 +102,7 @@
                     <th v-text="convertDate(cvItem.item.insertDate)"></th>
                     <th v-text="convertDate(cvItem.item.lastUpdateDate)"></th>
                     <th>
-                        <button @click="downloadAttachment(cvItem.item.attachmentLink)" class="attachemtn" style="border-color:rgba(75, 75, 93, 0.85); ">Download</button>
+                        <button @click="downloadAttachment(cvItem.item.attachmentLink)" class="attachment" style="border-color:rgba(75, 75, 93, 0.85); ">Download</button>
                     </th>
                     <th class="centered">
                         <button @click="changeStatus(cvItem.item, 1)" class="pendItem">Pend</button>
@@ -133,7 +134,7 @@
                     <th v-text="convertDate(cvItem.item.insertDate)"></th>
                     <th v-text="convertDate(cvItem.item.lastUpdateDate)"></th>
                     <th>
-                        <button @click="downloadAttachment(cvItem.item.attachmentLink)" class="attachemtn">Download</button>
+                        <button @click="downloadAttachment(cvItem.item.attachmentLink)" class="attachment">Download</button>
                     </th>
                     <th class="centered">
                         <button @click="changeStatus(cvItem.item, 1)" class="pendItem">Pend</button>

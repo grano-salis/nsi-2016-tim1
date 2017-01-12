@@ -34,6 +34,11 @@ function getAllPendingStatuses(){
                     pendingItemsVue = newPendingItemsVue(data.status);
                 }
             }
+            if(data.userRole == "role_prof"){
+                $(".pendItem").css("display", "none");
+                $(".rejectItem").css("display", "none");
+                $(".approveItem").css("display", "none");
+            }
         }
     });
 }

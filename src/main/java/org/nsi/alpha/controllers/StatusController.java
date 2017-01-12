@@ -78,6 +78,7 @@ public class StatusController {
                             .map(cvItem -> new CvItemWrapper(cvItem, name))
                             .collect(Collectors.toList());
             model.put("status", cvItemWrappers);
+            model.put("userRole", "role_prof");
             return model;
         }
 
