@@ -3346,7 +3346,23 @@ th.centered {
 	margin-top: 9px !important;
 
 }
+.save {
+	border-radius: 30px;
+	width: 300px;
+	background-color: transparent;
+	box-shadow: inset 0 0 0 3px #6cc091;
+	color: #6cc091 !important;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
 
+}
 .rejectItem {
 	background-color: #f96161 !important;
 	color: white !important;

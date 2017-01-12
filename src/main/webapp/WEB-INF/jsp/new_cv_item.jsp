@@ -117,7 +117,7 @@
                         <div style="margin-top: -15px" onclick="uploadCvItemAttachment()" id="file-upload-button" class="btn btn-danger btn-file">Upload</div><br>
                         <br><br>
                         <input style="width: 265px;" id="delete-button" type="button" onclick="deleteUpload()" value="Clear Attachment"/>
-                        <input style="float: right;" type="submit" onclick="saveCvItem()" value="Save CV item"/>
+                        <div style="float: right;" class="save" onclick="saveCvItem()" value="">Save CV item</div>
                     </form>
                     <div style="margin-top: 5px" id="uploadStatus"></div>
                 </div>
