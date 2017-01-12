@@ -61,7 +61,7 @@ public class CvItemController {
     public @ResponseBody Map createCvItem(
            @RequestParam(value = "name", required = false, defaultValue = "no_name") String name,
            @RequestParam(value = "description", required = false, defaultValue = "desc") String description,
-           @RequestParam(value = "criteriaId", required = false, defaultValue = "0") Integer criteriaId){
+           @RequestParam(value = "criteriaId", required = false, defaultValue = "1") Integer criteriaId){
 
         Map model = new HashMap<>();
         if(CURRENTLY_UPLOADED_FILENAME == null){
@@ -74,10 +74,6 @@ public class CvItemController {
         cvItem.setStatusId(1);
 
         cvItem.setInsertDate(new Date());
-
-        //TODO:
-        // Za ovaj cvId ce se postaviti vrijednost ID-a
-        // ulogovanog profesora (vjerovatno neka veza profa-cv)
 
         Long cvId = cvService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId();
 
@@ -197,7 +193,7 @@ public class CvItemController {
             throw new FTPConnectionClosedException("Failed to connect to server: " + serverAddress);
         } else {
             LOGGER.info(String.format("Action called - connected to server: %s.", serverAddress));
-            ftpClient.login("emirmire", "   ");
+            ftpClient.login("nsimire", "nsimire");
             ftpClient.enterLocalPassiveMode();
             ftpClient.changeWorkingDirectory(null);
 
